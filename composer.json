@@ -10,7 +10,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.14",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.4"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -19,7 +20,8 @@
         "laravel/telescope": "^4.7",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
-        "phpunit/phpunit": "^9.5.10"
+        "phpunit/phpunit": "^9.5.10",
+        "sven/artisan-view": "^3.4"
     },
     "autoload": {
         "psr-4": {
