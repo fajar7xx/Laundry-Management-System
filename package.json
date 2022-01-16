@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "admin-lte": "^3.1.0",
         "bootstrap-vue": "^2.21.2",
         "portal-vue": "^2.1.7",
         "vue-axios": "^3.4.0",
