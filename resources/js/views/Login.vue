@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="login-page">
     <div class="login-box">
       <!-- /.login-logo -->
       <div class="card card-outline card-primary">
@@ -11,8 +11,21 @@
         <div class="card-body">
           <p class="login-box-msg">Sign in to start your session</p>
 
+          <!-- <div class="alert alert-danger" v-if="errors.password">
+            {{ errors.password[0] }}
+          </div> -->
+
           <div class="alert alert-danger" v-if="errors.invalid">
             {{ errors.invalid }}
+          </div>
+
+          <div
+            class="alert alert-danger"
+            v-if="errors.email || errors.password"
+          >
+            <span v-if="errors.email">{{ errors.email[0] }}</span>
+            <br />
+            <span v-if="errors.password">{{ errors.password[0] }}</span>
           </div>
 
           <form @submit.prevent="login">
@@ -31,9 +44,9 @@
                   </div>
                 </div>
               </div>
-              <span v-if="errors.email" class="error invalid-feedback">{{
+              <!-- <span v-if="errors.email" class="error invalid-feedback">{{
                 errors.email[0]
-              }}</span>
+              }}</span> -->
             </div>
             <div class="form-group">
               <div class="input-group mb-3">
@@ -50,9 +63,9 @@
                   </div>
                 </div>
               </div>
-              <span v-if="errors.password" class="error invalid-feedback">{{
+              <!-- <span v-if="errors.password" class="error invalid-feedback">{{
                 errors.password[0]
-              }}</span>
+              }}</span> -->
             </div>
             <div class="row">
               <div class="col-8">
@@ -60,7 +73,7 @@
                   <input
                     type="checkbox"
                     id="remember"
-                    v-model="loginFrom.remember_me"
+                    v-model="loginForm.remember_me"
                   />
                   <label for="remember"> Remember Me </label>
                 </div>
@@ -106,6 +119,7 @@ export default {
   methods: {
     ...mapActions("auth", ["submit"]),
     ...mapMutations(["CLEAR_ERRORS"]),
+
     login() {
       this.submit(this.loginForm).then(() => {
         if (this.isAuth) {
@@ -118,5 +132,5 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>

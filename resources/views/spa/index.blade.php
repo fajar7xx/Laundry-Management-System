@@ -7,6 +7,7 @@
     <meta name="author" content="Fajar Siagian">
     <meta name="description" content="Laundry Management System">
     <meta name="keyword" content="Laundry Management System">
+    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
     <title>Laundry Management System</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -33,7 +34,7 @@
     <link rel="stylesheet" href="{{ asset('theme') }}/plugins/summernote/summernote-bs4.min.css">
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini">
 
 
     {{-- vue instance --}}

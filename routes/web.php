@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\SpaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +18,5 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Route::get('/', SpaController::class);
+// for spa view
 Route::get('/{any}', SpaController::class)->where('any', '.*');

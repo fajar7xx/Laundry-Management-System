@@ -32,6 +32,14 @@ import router from "./router";
 import store from "./store";
 import App from "./App";
 
+// import layout for specific needed
+import Default from "./layouts/Default.vue";
+import Blank from "./layouts/Blank.vue";
+
+// layout initialize in component global
+Vue.component("default-layout", Default);
+Vue.component("blank-layout", Blank);
+
 const app = new Vue({
     el: "#app",
     router,

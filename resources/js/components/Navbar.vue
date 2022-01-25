@@ -1,17 +1,17 @@
 <template>
   <div>
     <!-- Preloader -->
-    <div
+    <!-- <div
       class="preloader flex-column justify-content-center align-items-center"
     >
       <img
         class="animation__shake"
-        src="dist/img/AdminLTELogo.png"
+        src="/theme/dist/img/AdminLTELogo.png"
         alt="AdminLTELogo"
         height="60"
         width="60"
       />
-    </div>
+    </div> -->
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -22,18 +22,18 @@
             ><i class="fas fa-bars"></i
           ></a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Home</a>
+        <!-- <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link">Menu 1</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Contact</a>
-        </li>
+          <a href="#" class="nav-link">Menu 2</a>
+        </li> -->
       </ul>
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <!-- Navbar Search -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a
             class="nav-link"
             data-widget="navbar-search"
@@ -66,7 +66,7 @@
               </div>
             </form>
           </div>
-        </li>
+        </li> -->
 
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
@@ -186,7 +186,7 @@
             <i class="fas fa-expand-arrows-alt"></i>
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a
             class="nav-link"
             data-widget="control-sidebar"
@@ -196,7 +196,7 @@
           >
             <i class="fas fa-th-large"></i>
           </a>
-        </li>
+        </li> -->
       </ul>
     </nav>
     <!-- /.navbar -->

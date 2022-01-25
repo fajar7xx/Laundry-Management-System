@@ -71,6 +71,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -193,44 +195,46 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("section", { staticClass: "content" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("h3", { staticClass: "card-title" }, [_vm._v("Title")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-tools" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-tool",
-                  attrs: {
-                    type: "button",
-                    "data-card-widget": "collapse",
-                    title: "Collapse",
-                  },
-                },
-                [_c("i", { staticClass: "fas fa-minus" })]
-              ),
+        _c("div", { staticClass: "container-fluid" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _c("h3", { staticClass: "card-title" }, [_vm._v("Title")]),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-tool",
-                  attrs: {
-                    type: "button",
-                    "data-card-widget": "remove",
-                    title: "Remove",
+              _c("div", { staticClass: "card-tools" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-tool",
+                    attrs: {
+                      type: "button",
+                      "data-card-widget": "collapse",
+                      title: "Collapse",
+                    },
                   },
-                },
-                [_c("i", { staticClass: "fas fa-times" })]
-              ),
+                  [_c("i", { staticClass: "fas fa-minus" })]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-tool",
+                    attrs: {
+                      type: "button",
+                      "data-card-widget": "remove",
+                      title: "Remove",
+                    },
+                  },
+                  [_c("i", { staticClass: "fas fa-times" })]
+                ),
+              ]),
             ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _vm._v("Start creating your amazing application!"),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-footer" }, [_vm._v("Footer")]),
           ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _vm._v("Start creating your amazing application!"),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }, [_vm._v("Footer")]),
         ]),
       ]),
     ])
