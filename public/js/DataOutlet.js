@@ -126,10 +126,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // agar otomatis di render
       fields: [{
         key: "code",
-        label: "Kode OUtlet"
+        label: "Kode Outlet"
       }, {
         key: "name",
-        label: "Nama OUtlet"
+        label: "Nama Outlet"
       }, {
         key: "address",
         label: "Alamat"
@@ -379,7 +379,7 @@ var render = function () {
             ]),
           }),
           _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "row mt-2" }, [
             _c("div", { staticClass: "col-md-6" }, [
               _vm.outlets.data
                 ? _c("p", [

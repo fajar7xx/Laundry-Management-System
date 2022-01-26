@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\OutletCollection;
+use App\Http\Resources\OutletResource;
+use App\Models\Outlet;
 use Illuminate\Http\Request;
 
 class OutletController extends Controller
@@ -12,9 +15,18 @@ class OutletController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $search = $request->q;
+        $wildSearch = "%$search%";
+
+        $query = Outlet::query();
+        $query->when($search, function ($q) use ($wildSearch) {
+            $q->where('name', 'LIKE', $wildSearch);
+        });
+
+        $outlets = $query->paginate();
+        return new OutletCollection($outlets);
     }
 
     /**

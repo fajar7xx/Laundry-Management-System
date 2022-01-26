@@ -70,7 +70,7 @@
         </b-table>
 
         <!-- pagination -->
-        <div class="row">
+        <div class="row mt-2">
           <div class="col-md-6">
             <p v-if="outlets.data">
               <i class="fas fa-bars" aria-hidden="true"></i>
@@ -106,8 +106,8 @@ export default {
       // field untuk b-table, pastikan keynya sesuai dengan field database
       // agar otomatis di render
       fields: [
-        { key: "code", label: "Kode OUtlet" },
-        { key: "name", label: "Nama OUtlet" },
+        { key: "code", label: "Kode Outlet" },
+        { key: "name", label: "Nama Outlet" },
         { key: "address", label: "Alamat" },
         { key: "phone", label: "Telp" },
         { key: "status", label: "Status" },

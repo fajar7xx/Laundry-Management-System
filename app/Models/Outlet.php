@@ -17,4 +17,5 @@ class Outlet extends Model
         'address',
         'phone'
     ];
+    protected $perPage = 10;
 }

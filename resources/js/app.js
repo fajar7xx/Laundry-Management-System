@@ -60,7 +60,7 @@ const swalOptions = {
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#dd3",
 };
-Vue.use(VueSweetalert2);
+Vue.use(VueSweetalert2, swalOptions);
 
 const app = new Vue({
     el: "#app",

@@ -43,22 +43,22 @@ const routes = [
         },
     },
     {
-        path: "outlets",
+        path: "/outlets",
         component: INDEX_OUTLET,
         meta: {
             requiresAuth: true,
         },
         children: [
             {
-                path: "", //sebagai index
-                name: "outles.data",
+                path: "/", //sebagai index
+                name: "outlets.data",
                 component: DATA_OUTLET,
                 meta: {
                     title: "Manage Outlets",
                 },
             },
             {
-                path: "add",
+                path: "/add",
                 name: "outlets.add",
                 component: ADD_OUTLET,
                 meta: {
@@ -66,7 +66,7 @@ const routes = [
                 },
             },
             {
-                path: "edit/:id",
+                path: "/edit/:id",
                 name: "outlet.edit",
                 component: EDIT_OUTLET,
                 meta: {
@@ -76,7 +76,7 @@ const routes = [
         ],
     },
     {
-        path: "*",
+        path: "*s",
         name: "notfound",
         component: ERROR_404,
         meta: {

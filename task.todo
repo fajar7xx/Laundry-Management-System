@@ -1,7 +1,8 @@
 tutorial:
     ✔ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-1-schema-database @done(22-01-13 17:52)
-    ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-2-templating-authentication
+    ✔ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-2-templating-authentication @done(22-01-26 23:14)
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-3-management-outlets
+        ☐ https://youtu.be/QdCCTIg5_E0?list=PLqVuTr0mmtloEmc6QB-THjN5OILpS5g5j&t=1035 17:15
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-4-management-couriers
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-5-manage-laundry-products
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-6-role-user-permissions
@@ -24,7 +25,9 @@ resources:
     ☐  https://github.com/imcvampire/vue-axios
     ☐ https://axios-http.com/docs/interceptors
     ☐ https://github.com/learn-vuejs/vue-patterns
-
+    ☐ https://madewithvuejs.com/design-patterns-for-vuejs
+    ☐ https://learn-vuejs.github.io/vue-patterns/patterns/#productivity-tips
+    ☐ https://github.com/learn-vuejs/vue-patterns
 
 tutorial pendukung:
     ☐ https://www.youtube.com/watch?v=ujajODwCn6c vuejs dynamic layout components
@@ -34,4 +37,10 @@ tutorial pendukung:
     ☐ https://www.digitalocean.com/community/tutorial_series/javascript-design-patterns
     ☐ https://codesource.io/javascript-design-patterns/
 
+baca ini:
+    ☐ https://vueschool.io/articles/vuejs-tutorials/how-to-structure-a-large-scale-vue-js-application/
 
+
+
+channel youtube terkait vuejs:
+    ☐ https://www.youtube.com/c/ProgramWithErik/videos
