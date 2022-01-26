@@ -29,6 +29,7 @@
         "portal-vue": "^2.1.7",
         "vue-axios": "^3.4.0",
         "vue-router": "^3.5.3",
+        "vue-sweetalert2": "^5.0.2",
         "vuex": "^3.6.2",
         "vuex-persistedstate": "^4.1.0"
     }

@@ -1,7 +1,8 @@
 import axios from "axios";
-import LocalStorageService from "../services/LocalStorageService";
+import TokenService from "../services/TokenService";
 
-const localStorageService = LocalStorageService.getService();
+// consssst localStorageService = LocalStorageService.getService();
+const tokenService = TokenService.getService();
 const API = axios.create({
     baseURL: "/api",
     headers: {
@@ -21,7 +22,8 @@ const API = axios.create({
 
 API.interceptors.request.use(
     (config) => {
-        const token = localStorageService.getAccessToken();
+        // const token = localStorageService.getAccessToken();
+        const token = tokenService.getAccessToken();
         if (token) {
             config.headers["Authorization"] = `Bearer ${token}`;
         }

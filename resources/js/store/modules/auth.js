@@ -86,7 +86,8 @@ const actions = {
     logout({ commit }) {
         console.log("logout vuex");
         return new Promise((resolve, reject) => {
-            API.get("/logout")
+            // API.get("/logout")
+            AuthService.logout()
                 .then((response) => {
                     console.log();
                     // localStorage.removeItem("token");

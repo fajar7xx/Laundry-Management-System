@@ -7,6 +7,7 @@ import createPersistedState from "vuex-persistedstate";
 
 // import all store modules
 import auth from "./modules/auth";
+import outlet from "./modules/outlet";
 
 Vue.use(Vuex);
 
@@ -14,6 +15,7 @@ const store = new Vuex.Store({
     // all modules
     modules: {
         auth,
+        outlet,
     },
     state: {
         token: localStorage.getItem("token"),

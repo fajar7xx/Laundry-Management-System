@@ -3,5 +3,9 @@
     "/js/Home.js": "/js/Home.js",
     "/js/Login.js": "/js/Login.js",
     "/js/Error404.js": "/js/Error404.js",
-    "/css/app.css": "/css/app.css"
+    "/js/DataOutlet.js": "/js/DataOutlet.js",
+    "/js/AddOutlet.js": "/js/AddOutlet.js",
+    "/js/EditOutlet.js": "/js/EditOutlet.js",
+    "/css/app.css": "/css/app.css",
+    "/js/IndexOutlet.js": "/js/IndexOutlet.js"
 }

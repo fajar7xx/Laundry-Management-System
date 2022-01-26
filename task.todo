@@ -20,10 +20,18 @@ resources:
     ☐ https://stackoverflow.com/questions/41164672/whats-the-equivalent-of-angular-service-in-vuejs/54165192#54165192
     ☐ https://www.youtube.com/watch?v=muaBCsVE-NM
     ☐ https://www.digitalocean.com/community/tutorials/vuejs-rest-api-axios
+    ☐ https://vuejsexamples.com/
+    ☐  https://github.com/imcvampire/vue-axios
+    ☐ https://axios-http.com/docs/interceptors
+    ☐ https://github.com/learn-vuejs/vue-patterns
 
 
 tutorial pendukung:
     ☐ https://www.youtube.com/watch?v=ujajODwCn6c vuejs dynamic layout components
     ☐ https://medium.com/swlh/handling-access-and-refresh-tokens-using-axios-interceptors-3970b601a5da Handling Access and Refresh Tokens using Axios Interceptors.
-    ☐ https://vuejsexamples.com/
+    ☐ https://medium.com/backenders-club/consuming-apis-using-the-repository-pattern-in-vue-js-e64671b27b09
+    ☐ https://code.tutsplus.com/tutorials/design-patterns-for-communication-between-vuejs-component--cms-32354
+    ☐ https://www.digitalocean.com/community/tutorial_series/javascript-design-patterns
+    ☐ https://codesource.io/javascript-design-patterns/
+
 
