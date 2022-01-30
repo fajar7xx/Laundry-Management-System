@@ -231,7 +231,7 @@ var render = function () {
         "li",
         { staticClass: "breadcrumb-item" },
         [
-          _c("router-link", { attrs: { to: { name: "home" } } }, [
+          _c("router-link", { attrs: { to: { name: "Home" } } }, [
             _vm._v("Home"),
           ]),
         ],

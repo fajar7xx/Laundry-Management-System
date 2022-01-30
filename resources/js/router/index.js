@@ -25,7 +25,7 @@ Vue.use(VueRouter);
 const routes = [
     {
         path: "/",
-        name: "home",
+        name: "Home",
         component: HOME,
         meta: {
             requiresAuth: true,
@@ -34,7 +34,7 @@ const routes = [
     },
     {
         path: "/login",
-        name: "login",
+        name: "Login",
         component: LOGIN,
         meta: {
             // requiresAuth: false,
@@ -49,25 +49,27 @@ const routes = [
             requiresAuth: true,
         },
         children: [
+            // penjelasan nested routing
+            // https://router.vuejs.org/guide/essentials/nested-routes.html
             {
-                path: "/", //sebagai index
-                name: "outlets.data",
+                path: "", //sebagai index
+                name: "OutletData",
                 component: DATA_OUTLET,
                 meta: {
                     title: "Manage Outlets",
                 },
             },
             {
-                path: "/add",
-                name: "outlets.add",
+                path: "add",
+                name: "OutletAdd",
                 component: ADD_OUTLET,
                 meta: {
                     title: "Add New Outlet",
                 },
             },
             {
-                path: "/edit/:id",
-                name: "outlet.edit",
+                path: "edit/:id",
+                name: "OutletEdit",
                 component: EDIT_OUTLET,
                 meta: {
                     title: "Edit OUtlet",
@@ -77,11 +79,11 @@ const routes = [
     },
     {
         path: "*s",
-        name: "notfound",
+        name: "NotFound",
         component: ERROR_404,
         meta: {
             layout: "blank",
-            title: "not found",
+            title: "Not Found",
         },
     },
 ];
@@ -98,7 +100,7 @@ router.beforeEach((to, from, next) => {
     if (to.matched.some((record) => record.meta.requiresAuth)) {
         let auth = store.getters.isAuth;
         if (!auth) {
-            next({ name: "login" });
+            next({ name: "Login" });
         } else {
             next();
         }

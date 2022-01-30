@@ -4,6 +4,7 @@ import Vuex from "vuex";
 // plugin
 // library that saves our Vuex data between page reloads.
 import createPersistedState from "vuex-persistedstate";
+import TokenService from "../services/TokenService";
 
 // import all store modules
 import auth from "./modules/auth";
@@ -11,17 +12,21 @@ import outlet from "./modules/outlet";
 
 Vue.use(Vuex);
 
+const tokenService = TokenService.getService();
 const store = new Vuex.Store({
     // all modules
     modules: {
         auth,
         outlet,
     },
+
     state: {
-        token: localStorage.getItem("token"),
+        // token: localStorage.getItem("token"),
+        token: tokenService.getAccessToken(),
         user: null,
         errors: [],
     },
+
     mutations: {
         // payload itu sama dengan data yang dikirm dan akan jadi parameter
         // ibaratkan aja ini method pada laravel dimana payload == $request
@@ -43,16 +48,20 @@ const store = new Vuex.Store({
         CLEAR_USER_DATA(state) {
             state.token = null;
             state.user = null;
+            tokenService.clearToken();
             localStorage.clear();
             location.reload();
         },
     },
+
     actions: {},
+
     getters: {
         isAuth: (state) => {
             return state.token != "null" && state.token != null;
         },
     },
+
     plugins: [createPersistedState()],
 });
 

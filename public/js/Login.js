@@ -101,20 +101,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -143,7 +129,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           _this.CLEAR_ERRORS();
 
           _this.$router.push({
-            name: "home"
+            name: "Home"
           });
         }
       });
@@ -246,8 +232,8 @@ var render = function () {
           [
             _c(
               "router-link",
-              { staticClass: "h1", attrs: { to: { name: "home" } } },
-              [_vm._v("Laundry Management System")]
+              { staticClass: "h1", attrs: { to: { name: "Home" } } },
+              [_vm._v("Laundry")]
             ),
           ],
           1
@@ -440,7 +426,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-4" }, [
       _c(
         "button",
-        { staticClass: "btn btn-primary btn-block", attrs: { type: "submit" } },
+        {
+          staticClass: "btn btn-block bg-gradient-primary text-white",
+          attrs: { type: "submit" },
+        },
         [_vm._v("\n                Sign In\n              ")]
       ),
     ])

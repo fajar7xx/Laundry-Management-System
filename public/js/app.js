@@ -2091,28 +2091,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
- // import Navbar from "./components/Navbar";
-// import Footer from "./components/Footer";
-// import Sidebar from "./components/Sidebar";
 
-var DEFAULTLAYOUT = "default";
+var DEFAULT_LAYOUT = "default";
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  //   components: {
-  //     Navbar,
-  //     Footer,
-  //     Sidebar,
-  //   },
-  created: function created() {// console.log(JSON.stringify(localStorage.getItem("token")));
+  created: function created() {
+    console.log("app started");
   },
   computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)(["token"])), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(["isAuth"])), {}, {
     layout: function layout() {
-      return (this.$route.meta.layout || DEFAULTLAYOUT) + "-layout";
+      return (this.$route.meta.layout || DEFAULT_LAYOUT) + "-layout";
     }
   })
 });
@@ -2774,32 +2761,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/vue-sweetalert.umd.js");
 /* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-// require("./bootstrap");
-// window.Vue = require("vue").default;
-
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- *
- *
- */
 
 
 
@@ -2890,7 +2851,7 @@ vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
 
 var routes = [{
   path: "/",
-  name: "home",
+  name: "Home",
   component: HOME,
   meta: {
     requiresAuth: true,
@@ -2898,7 +2859,7 @@ var routes = [{
   }
 }, {
   path: "/login",
-  name: "login",
+  name: "Login",
   component: LOGIN,
   meta: {
     // requiresAuth: false,
@@ -2911,24 +2872,26 @@ var routes = [{
   meta: {
     requiresAuth: true
   },
-  children: [{
-    path: "/",
+  children: [// penjelasan nested routing
+  // https://router.vuejs.org/guide/essentials/nested-routes.html
+  {
+    path: "",
     //sebagai index
-    name: "outlets.data",
+    name: "OutletData",
     component: DATA_OUTLET,
     meta: {
       title: "Manage Outlets"
     }
   }, {
-    path: "/add",
-    name: "outlets.add",
+    path: "add",
+    name: "OutletAdd",
     component: ADD_OUTLET,
     meta: {
       title: "Add New Outlet"
     }
   }, {
-    path: "/edit/:id",
-    name: "outlet.edit",
+    path: "edit/:id",
+    name: "OutletEdit",
     component: EDIT_OUTLET,
     meta: {
       title: "Edit OUtlet"
@@ -2936,11 +2899,11 @@ var routes = [{
   }]
 }, {
   path: "*s",
-  name: "notfound",
+  name: "NotFound",
   component: ERROR_404,
   meta: {
     layout: "blank",
-    title: "not found"
+    title: "Not Found"
   }
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
@@ -2959,7 +2922,7 @@ router.beforeEach(function (to, from, next) {
 
     if (!auth) {
       next({
-        name: "login"
+        name: "Login"
       });
     } else {
       next();
@@ -3004,6 +2967,40 @@ var AuthService = {
 
 /***/ }),
 
+/***/ "./resources/js/services/OutletService.js":
+/*!************************************************!*\
+  !*** ./resources/js/services/OutletService.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _utils_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/api */ "./resources/js/utils/api.js");
+
+var OutletService = {
+  getOutlets: function getOutlets(page, search) {
+    return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].get("/outlets?page".concat(page, "&q=").concat(search));
+  },
+  getOutlet: function getOutlet(id) {
+    return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].get("/outlets/".concat(id));
+  },
+  createOutlet: function createOutlet(payload) {
+    return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].post("/outlets", payload);
+  },
+  updateOutlet: function updateOutlet(payload, id) {
+    return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].put("/outlets/".concat(id), payload);
+  },
+  deleteOutlet: function deleteOutlet(id) {
+    return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]("outlets/".concat(id));
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OutletService);
+
+/***/ }),
+
 /***/ "./resources/js/services/TokenService.js":
 /*!***********************************************!*\
   !*** ./resources/js/services/TokenService.js ***!
@@ -3039,11 +3036,16 @@ var TokenService = function () {
     localStorage.removeItem("token");
   }
 
+  function _resetToken() {
+    localStorage.setItem("token", null);
+  }
+
   return {
     getService: _getService,
     setToken: _setToken,
     getAccessToken: _getAcccessToken,
-    clearToken: _clearToken
+    clearToken: _clearToken,
+    resetToken: _resetToken
   };
 }();
 
@@ -3062,28 +3064,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var vuex_persistedstate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-persistedstate */ "./node_modules/vuex-persistedstate/dist/vuex-persistedstate.es.js");
-/* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth.js");
-/* harmony import */ var _modules_outlet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/outlet */ "./resources/js/store/modules/outlet.js");
+/* harmony import */ var _services_TokenService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/TokenService */ "./resources/js/services/TokenService.js");
+/* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth.js");
+/* harmony import */ var _modules_outlet__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/outlet */ "./resources/js/store/modules/outlet.js");
 
  // plugin
 // library that saves our Vuex data between page reloads.
+
 
  // import all store modules
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_3__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_4__["default"]);
-var store = new vuex__WEBPACK_IMPORTED_MODULE_4__["default"].Store({
+vue__WEBPACK_IMPORTED_MODULE_4__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_5__["default"]);
+var tokenService = _services_TokenService__WEBPACK_IMPORTED_MODULE_1__["default"].getService();
+var store = new vuex__WEBPACK_IMPORTED_MODULE_5__["default"].Store({
   // all modules
   modules: {
-    auth: _modules_auth__WEBPACK_IMPORTED_MODULE_1__["default"],
-    outlet: _modules_outlet__WEBPACK_IMPORTED_MODULE_2__["default"]
+    auth: _modules_auth__WEBPACK_IMPORTED_MODULE_2__["default"],
+    outlet: _modules_outlet__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   state: {
-    token: localStorage.getItem("token"),
+    // token: localStorage.getItem("token"),
+    token: tokenService.getAccessToken(),
     user: null,
     errors: []
   },
@@ -3108,6 +3114,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_4__["default"].Store({
     CLEAR_USER_DATA: function CLEAR_USER_DATA(state) {
       state.token = null;
       state.user = null;
+      tokenService.clearToken();
       localStorage.clear();
       location.reload();
     }
@@ -3135,113 +3142,184 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _utils_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/api */ "./resources/js/utils/api.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _services_AuthService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/AuthService */ "./resources/js/services/AuthService.js");
+/* harmony import */ var _services_TokenService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/TokenService */ "./resources/js/services/TokenService.js");
 
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+var tokenService = _services_TokenService__WEBPACK_IMPORTED_MODULE_2__["default"].getService();
 var state = {};
 var mutations = {};
 var actions = {
-  submit: function submit(_ref, payload) {
-    var commit = _ref.commit;
-    // reset local storage
-    localStorage.setItem("token", null); // RESET STATE TOKEN MENJADI NULL
-    //KARENA MUTATIONS SET_TOKEN BERADA PADA ROOT STORES, MAKA DITAMBAHKAN PARAMETER
-    //{ root: true }
+  // submit({ commit }, payload) {
+  //     // reset local storage
+  //     localStorage.setItem("token", null);
+  //     // RESET STATE TOKEN MENJADI NULL
+  //     //KARENA MUTATIONS SET_TOKEN BERADA PADA ROOT STORES, MAKA DITAMBAHKAN PARAMETER
+  //     //{ root: true }
+  //     commit("SET_TOKEN", null, { root: true });
+  //     //KITA MENGGUNAKAN PROMISE AGAR FUNGSI SELANJUTNYA BERJALAN KETIKA FUNGSI INI SELESAI
+  //     return new Promise((resolve, reject) => {
+  //         //MENGIRIM REQUEST KE SERVER DENGAN URI /login
+  //         //DAN PAYLOAD ADALAH DATA YANG DIKIRIMKAN DARI COMPONENT LOGIN.VUE
+  //         AuthService.login(payload)
+  //             .then((response) => {
+  //                 if (response.data.status === "success") {
+  //                     let token = response.data.token;
+  //                     let user = response.data.data;
+  //                     // console.log(token);
+  //                     localStorage.setItem("token", token);
+  //                     commit("SET_TOKEN", token, { root: true });
+  //                     commit("SET_USER", user, { root: true });
+  //                 } else {
+  //                     commit(
+  //                         "SET_ERRORS",
+  //                         {
+  //                             invalid: response.data.message,
+  //                         },
+  //                         { root: true }
+  //                     );
+  //                 }
+  //                 // JANGAN LUPA UNTUK MELAKUKAN RESOLVE AGAR DIANGGAP SELESAI
+  //                 resolve(response.data);
+  //             })
+  //             .catch((error) => {
+  //                 if (error.response.status === 422) {
+  //                     console.group("error login");
+  //                     console.log(error.response.data.errors);
+  //                     console.log(error.response.data);
+  //                     console.groupEnd();
+  //                     commit("SET_ERRORS", error.response.data.errors, {
+  //                         root: true,
+  //                     });
+  //                 }
+  //             });
+  //     });
+  // },
+  submit: function submit(_ref, credentials) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var commit, response, token, user;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              commit = _ref.commit;
+              tokenService.resetToken();
+              commit("SET_TOKEN", null, {
+                root: true
+              });
+              _context.prev = 3;
+              _context.next = 6;
+              return _services_AuthService__WEBPACK_IMPORTED_MODULE_1__["default"].login(credentials);
 
-    commit("SET_TOKEN", null, {
-      root: true
-    }); //KITA MENGGUNAKAN PROMISE AGAR FUNGSI SELANJUTNYA BERJALAN KETIKA FUNGSI INI SELESAI
+            case 6:
+              response = _context.sent;
 
-    return new Promise(function (resolve, reject) {
-      //MENGIRIM REQUEST KE SERVER DENGAN URI /login
-      //DAN PAYLOAD ADALAH DATA YANG DIKIRIMKAN DARI COMPONENT LOGIN.VUE
-      // API.post("/login", payload)
-      //     .then((response) => {
-      //         if (response.data.status === "success") {
-      //             let token = response.data.token;
-      //             let user = response.data.data;
-      //             console.log(token);
-      //             localStorage.setItem("token", token);
-      //             commit("SET_TOKEN", token, { root: true });
-      //             commit();
-      //         } else {
-      //             commit(
-      //                 "SET_ERRORS",
-      //                 {
-      //                     // invalid: "user didnt match",
-      //                     invalid: response.data.message,
-      //                 },
-      //                 { root: true }
-      //             );
-      //         }
-      //         //JANGAN LUPA UNTUK MELAKUKAN RESOLVE AGAR DIANGGAP SELESAI
-      //         resolve(response.data);
-      //     })
-      //     .catch((error) => {
-      //         if (error.response.status === 422) {
-      //             console.log(error.response.data.errors);
-      //             console.log(error.response.data);
-      //             commit("SET_ERRORS", error.response.data.errors, {
-      //                 root: true,
-      //             });
-      //         }
-      //     });
-      _services_AuthService__WEBPACK_IMPORTED_MODULE_1__["default"].login(payload).then(function (response) {
-        // console.log(response.data);
-        // console.log(response.data.status);
-        if (response.data.status === "success") {
-          var token = response.data.token;
-          var user = response.data.data; // console.log(token);
+              if (response.data.status === "success") {
+                token = response.data.token;
+                user = response.data.data;
+                tokenService.setToken(token);
+                commit("SET_TOKEN", token, {
+                  root: true
+                });
+                commit("SET_USER", user, {
+                  root: true
+                });
+              } else {
+                console.log("gagal login");
+                commit("SET_ERRORS", {
+                  invalid: response.data.message
+                }, {
+                  root: true
+                });
+              }
 
-          localStorage.setItem("token", token);
-          commit("SET_TOKEN", token, {
-            root: true
-          });
-          commit("SET_USER", user, {
-            root: true
-          });
-        } else {
-          commit("SET_ERRORS", {
-            invalid: response.data.message
-          }, {
-            root: true
-          });
-        } // JANGAN LUPA UNTUK MELAKUKAN RESOLVE AGAR DIANGGAP SELESAI
+              _context.next = 13;
+              break;
 
+            case 10:
+              _context.prev = 10;
+              _context.t0 = _context["catch"](3);
 
-        resolve(response.data);
-      })["catch"](function (error) {
-        // console.log("error");
-        // console.log(error);
-        if (error.response.status === 422) {
-          console.log(error.response.data.errors);
-          console.log(error.response.data);
-          commit("SET_ERRORS", error.response.data.errors, {
-            root: true
-          });
+              if (_context.t0.response.status === 422) {
+                console.group("login error");
+                console.log(_context.t0.response);
+                console.log(_context.t0.response.data.errors);
+                console.log(_context.t0.response.data);
+                console.groupEnd();
+                commit("SET_ERRORS", _context.t0.response.data.errors, {
+                  root: true
+                });
+              }
+
+            case 13:
+            case "end":
+              return _context.stop();
+          }
         }
-      });
-    });
+      }, _callee, null, [[3, 10]]);
+    }))();
   },
+  // logout({ commit }) {
+  //     console.log("logout vuex");
+  //     return new Promise((resolve, reject) => {
+  //         AuthService.logout()
+  //             .then((response) => {
+  //                 // console.log();
+  //                 // commit("CLEAR_TOKEN", null, { root: true });
+  //                 commit("CLEAR_USER_DATA", null, { root: true });
+  //                 resolve(response.data);
+  //             })
+  //             .catch((error) => {
+  //                 console.group("logout error");
+  //                 console.log(error);
+  //                 console.groupEnd;
+  //             });
+  //     });
+  // },
   logout: function logout(_ref2) {
-    var commit = _ref2.commit;
-    console.log("logout vuex");
-    return new Promise(function (resolve, reject) {
-      // API.get("/logout")
-      _services_AuthService__WEBPACK_IMPORTED_MODULE_1__["default"].logout().then(function (response) {
-        console.log(); // localStorage.removeItem("token");
-        // commit("CLEAR_TOKEN", null, { root: true });
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              commit = _ref2.commit;
+              console.log("logout dari vuex");
+              _context2.prev = 2;
+              _context2.next = 5;
+              return _services_AuthService__WEBPACK_IMPORTED_MODULE_1__["default"].logout();
 
-        commit("CLEAR_USER_DATA", null, {
-          root: true
-        });
-        resolve(response.data);
-      })["catch"](function (error) {
-        console.log("logout error");
-        console.log(error);
-      });
-    });
+            case 5:
+              response = _context2.sent;
+              console.log(response.data.message);
+              commit("CLEAR_USER_DATA", null, {
+                root: true
+              });
+              _context2.next = 15;
+              break;
+
+            case 10:
+              _context2.prev = 10;
+              _context2.t0 = _context2["catch"](2);
+              console.group("logout error");
+              console.log(_context2.t0);
+              console.groupEnd;
+
+            case 15:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[2, 10]]);
+    }))();
   }
 };
 var getters = {};
@@ -3269,11 +3347,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/api */ "./resources/js/utils/api.js");
+/* harmony import */ var _services_OutletService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/OutletService */ "./resources/js/services/OutletService.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 var state = {
@@ -3363,8 +3443,7 @@ var actions = {
   // tambah outlet
   submitOutlet: function submitOutlet(_ref2) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var dispatch, commit, state, _yield$API$post, response;
-
+      var dispatch, commit, state, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -3375,10 +3454,14 @@ var actions = {
               return _utils_api__WEBPACK_IMPORTED_MODULE_1__["default"].post("/outlets", state.outlet);
 
             case 4:
-              _yield$API$post = _context2.sent;
-              response = _yield$API$post.response;
-              dispatch("getOutlets");
-              _context2.next = 14;
+              response = _context2.sent;
+              commit("CLEAR_FORM");
+              dispatch("getOutlets"); // await dispatch("getOutlets");
+              // dispatch("getOutlets").then(() => {
+              //     response.data;
+              // });
+
+              _context2.next = 17;
               break;
 
             case 9:
@@ -3386,14 +3469,94 @@ var actions = {
               _context2.t0 = _context2["catch"](1);
               console.group("error for post outlets data");
               console.log(_context2.t0);
-              console.groupEnd(); // commit('SET_ERRORS', error.response.data.errors, {root: true})
+              console.log(_context2.t0.response);
+              console.groupEnd();
 
-            case 14:
+              if (_context2.t0.response.status === 422) {
+                console.log("error error error");
+                commit("SET_ERRORS", _context2.t0.response.data.errors, {
+                  root: true
+                });
+              }
+
+              throw _context2.t0;
+
+            case 17:
             case "end":
               return _context2.stop();
           }
         }
       }, _callee2, null, [[1, 9]]);
+    }))();
+  },
+  editOutlet: function editOutlet(_ref3, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      var comit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              comit = _ref3.comit;
+              _context3.prev = 1;
+              _context3.next = 4;
+              return _services_OutletService__WEBPACK_IMPORTED_MODULE_2__["default"].getOutlet(payload);
+
+            case 4:
+              response = _context3.sent;
+              commit("CLEAR_FORM");
+              _context3.next = 15;
+              break;
+
+            case 8:
+              _context3.prev = 8;
+              _context3.t0 = _context3["catch"](1);
+              console.group("error for edit outlet");
+              console.log(_context3.t0);
+              console.log(_context3.t0.response);
+              console.groupEnd();
+              throw _context3.t0;
+
+            case 15:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, null, [[1, 8]]);
+    }))();
+  },
+  removeOutlet: function removeOutlet(_ref4, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              commit = _ref4.commit;
+              _context4.prev = 1;
+              _context4.next = 4;
+              return _services_OutletService__WEBPACK_IMPORTED_MODULE_2__["default"].deleteOutlet(payload);
+
+            case 4:
+              response = _context4.sent;
+              dispatch("getOutlets");
+              _context4.next = 15;
+              break;
+
+            case 8:
+              _context4.prev = 8;
+              _context4.t0 = _context4["catch"](1);
+              onsole.group("error for remove outlet");
+              console.log(_context4.t0);
+              console.log(_context4.t0.response);
+              console.groupEnd();
+              throw _context4.t0;
+
+            case 15:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[1, 8]]);
     }))();
   }
 };
@@ -3440,7 +3603,8 @@ var API = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
     "Content-Type": "application/json",
     Accept: "application/json"
   },
-  withCredentials: true
+  withCredentials: true,
+  timeout: 5000
 });
 API.interceptors.request.use(function (config) {
   // const token = localStorageService.getAccessToken();
@@ -51481,7 +51645,7 @@ var render = function () {
                       "router-link",
                       {
                         staticClass: "nav-link",
-                        attrs: { to: { name: "outlets.data" } },
+                        attrs: { to: { name: "OutletData" } },
                       },
                       [
                         _c("i", { staticClass: "nav-icon fas fa-store" }),

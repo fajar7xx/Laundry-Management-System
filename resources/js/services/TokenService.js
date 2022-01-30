@@ -22,11 +22,16 @@ const TokenService = (() => {
         localStorage.removeItem("token");
     }
 
+    function _resetToken() {
+        localStorage.setItem("token", null);
+    }
+
     return {
         getService: _getService,
         setToken: _setToken,
         getAccessToken: _getAcccessToken,
         clearToken: _clearToken,
+        resetToken: _resetToken,
     };
 })();
 

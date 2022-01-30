@@ -1,11 +1,5 @@
 <template>
   <div class="wrapper">
-    <!-- <Navbar v-if="isAuth" />
-    <Sidebar v-if="isAuth" />
-    <div class="content-wrapper">
-      <router-view></router-view>
-    </div>
-    <Footer v-if="isAuth" /> -->
     <component :is="layout">
       <router-view></router-view>
     </component>
@@ -14,25 +8,16 @@
 
 <script>
 import { mapState, mapGetters } from "vuex";
-// import Navbar from "./components/Navbar";
-// import Footer from "./components/Footer";
-// import Sidebar from "./components/Sidebar";
-const DEFAULTLAYOUT = "default";
+const DEFAULT_LAYOUT = "default";
 export default {
-  //   components: {
-  //     Navbar,
-  //     Footer,
-  //     Sidebar,
-  //   },
-
   created() {
-    // console.log(JSON.stringify(localStorage.getItem("token")));
+    console.log("app started");
   },
   computed: {
     ...mapState(["token"]),
     ...mapGetters(["isAuth"]),
     layout() {
-      return (this.$route.meta.layout || DEFAULTLAYOUT) + "-layout";
+      return (this.$route.meta.layout || DEFAULT_LAYOUT) + "-layout";
     },
   },
 };

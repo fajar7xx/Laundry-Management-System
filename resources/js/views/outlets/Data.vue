@@ -23,7 +23,7 @@
           </button>
         </div> -->
         <router-link
-          :to="{ name: 'outlets.add' }"
+          :to="{ name: 'OutletAdd' }"
           class="btn btn-primary btn-sm btn-flat"
           >Add Outlet</router-link
         >
@@ -47,22 +47,22 @@
           :fields="fields"
           show-empty
         >
-          <template slot="status" slot-scope="row">
-            <span class="label label-success" v-if="row.item.status === 1"
+          <template #cell(status)="data">
+            <span class="badge badge-success" v-if="data.item.status == 1"
               >Active</span
             >
-            <span class="label label-default" v-else>Inactive</span>
+            <span class="badge badge-default" v-else>Inactive</span>
           </template>
-          <template slot="actions" slot-scope="row">
+          <template #cell(actions)="data">
             <router-link
-              :to="{ name: 'outlets.edit', params: { id: row.item.code } }"
+              :to="{ name: 'OutletEdit', params: { id: data.item.id } }"
               class="btn btn-warning btn-sm"
             >
               Edit
             </router-link>
             <button
               class="btn btn-danger btn-sm"
-              @click="deleteOutlets(row.item.id)"
+              @click="deleteOutlet(data.item.id)"
             >
               Delete
             </button>
@@ -74,7 +74,7 @@
           <div class="col-md-6">
             <p v-if="outlets.data">
               <i class="fas fa-bars" aria-hidden="true"></i>
-              {{ outlets.data.length }} of {{ outlets.meta.total }}
+              {{ outlets.data.length }} of {{ outlets.meta.total }} total data
             </p>
           </div>
           <div class="col-md-6">
@@ -97,10 +97,6 @@
 <script>
 import { mapActions, mapState } from "vuex";
 export default {
-  created() {
-    // sebelum componen diload, request data dari server
-    this.getOutlets();
-  },
   data() {
     return {
       // field untuk b-table, pastikan keynya sesuai dengan field database
@@ -115,6 +111,10 @@ export default {
       ],
       search: "",
     };
+  },
+  created() {
+    // sebelum componen diload, request data dari server
+    this.getOutlets();
   },
   computed: {
     //   mengambil data outlets dari state outlets
@@ -133,7 +133,17 @@ export default {
       },
     },
   },
-  watch: {},
+  watch: {
+    page() {
+      //   apabila value dari page brubah akan req data dari server
+      this.getOutlets();
+    },
+    search() {
+      //apabila value dari search berubha
+      //   maka akan req berdasarkan data search
+      thi.getOutlets(this.search);
+    },
+  },
   methods: {
     //   mengambil fungsi dari vuex module outlet
     ...mapActions("outlet", ["getOutlets", "removeOutlet"]),

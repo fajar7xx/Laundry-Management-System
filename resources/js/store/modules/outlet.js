@@ -1,4 +1,5 @@
 import API from "../../utils/api";
+import OutletService from "../../services/OutletService";
 
 const state = {
     outlets: [], //menampung data outlet yang didapatkan dari database
@@ -67,13 +68,49 @@ const actions = {
     // tambah outlet
     async submitOutlet({ dispatch, commit, state }) {
         try {
-            const { response } = await API.post("/outlets", state.outlet);
+            const response = await API.post("/outlets", state.outlet);
+            commit("CLEAR_FORM");
             dispatch("getOutlets");
+            // await dispatch("getOutlets");
+            // dispatch("getOutlets").then(() => {
+            //     response.data;
+            // });
         } catch (error) {
             console.group("error for post outlets data");
             console.log(error);
+            console.log(error.response);
             console.groupEnd();
-            // commit('SET_ERRORS', error.response.data.errors, {root: true})
+            if (error.response.status === 422) {
+                console.log("error error error");
+                commit("SET_ERRORS", error.response.data.errors, {
+                    root: true,
+                });
+            }
+            throw error;
+        }
+    },
+    async editOutlet({ comit }, payload) {
+        try {
+            const response = await OutletService.getOutlet(payload);
+            commit("CLEAR_FORM");
+        } catch (error) {
+            console.group("error for edit outlet");
+            console.log(error);
+            console.log(error.response);
+            console.groupEnd();
+            throw error;
+        }
+    },
+    async removeOutlet({ commit }, payload) {
+        try {
+            const response = await OutletService.deleteOutlet(payload);
+            dispatch("getOutlets");
+        } catch (error) {
+            onsole.group("error for remove outlet");
+            console.log(error);
+            console.log(error.response);
+            console.groupEnd();
+            throw error;
         }
     },
 };

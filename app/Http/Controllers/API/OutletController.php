@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OutletStoreFormRequest;
 use App\Http\Resources\OutletCollection;
 use App\Http\Resources\OutletResource;
 use App\Models\Outlet;
@@ -35,9 +36,17 @@ class OutletController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OutletStoreFormRequest $request)
     {
-        //
+        $outlet = Outlet::create([
+            'code'    => $request->code,
+            'name'    => $request->name,
+            'status'  => $request->status,
+            'address' => $request->address,
+            'phone'   => $request->phone
+        ]);
+
+        return new OutletResource($outlet);
     }
 
     /**

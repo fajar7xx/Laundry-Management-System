@@ -1,19 +1,12 @@
 <template>
   <div class="login-page">
     <div class="login-box">
-      <!-- /.login-logo -->
       <div class="card card-outline card-primary">
         <div class="card-header text-center">
-          <router-link :to="{ name: 'home' }" class="h1"
-            >Laundry Management System</router-link
-          >
+          <router-link :to="{ name: 'Home' }" class="h1">Laundry</router-link>
         </div>
         <div class="card-body">
           <p class="login-box-msg">Sign in to start your session</p>
-
-          <!-- <div class="alert alert-danger" v-if="errors.password">
-            {{ errors.password[0] }}
-          </div> -->
 
           <div class="alert alert-danger" v-if="errors.invalid">
             {{ errors.invalid }}
@@ -44,9 +37,6 @@
                   </div>
                 </div>
               </div>
-              <!-- <span v-if="errors.email" class="error invalid-feedback">{{
-                errors.email[0]
-              }}</span> -->
             </div>
             <div class="form-group">
               <div class="input-group mb-3">
@@ -63,9 +53,6 @@
                   </div>
                 </div>
               </div>
-              <!-- <span v-if="errors.password" class="error invalid-feedback">{{
-                errors.password[0]
-              }}</span> -->
             </div>
             <div class="row">
               <div class="col-8">
@@ -78,19 +65,18 @@
                   <label for="remember"> Remember Me </label>
                 </div>
               </div>
-              <!-- /.col -->
               <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block">
+                <button
+                  type="submit"
+                  class="btn btn-block bg-gradient-primary text-white"
+                >
                   Sign In
                 </button>
               </div>
-              <!-- /.col -->
             </div>
           </form>
         </div>
-        <!-- /.card-body -->
       </div>
-      <!-- /.card -->
     </div>
   </div>
 </template>
@@ -124,7 +110,7 @@ export default {
       this.submit(this.loginForm).then(() => {
         if (this.isAuth) {
           this.CLEAR_ERRORS();
-          this.$router.push({ name: "home" });
+          this.$router.push({ name: "Home" });
         }
       });
     },

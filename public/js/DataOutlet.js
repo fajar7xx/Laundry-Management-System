@@ -116,10 +116,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  created: function created() {
-    // sebelum componen diload, request data dari server
-    this.getOutlets();
-  },
   data: function data() {
     return {
       // field untuk b-table, pastikan keynya sesuai dengan field database
@@ -146,6 +142,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       search: ""
     };
   },
+  created: function created() {
+    // sebelum componen diload, request data dari server
+    this.getOutlets();
+  },
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)("outlet", {
     outlets: function outlets(state) {
       return state.outlets;
@@ -163,7 +163,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     }
   }),
-  watch: {},
+  watch: {
+    page: function page() {
+      //   apabila value dari page brubah akan req data dari server
+      this.getOutlets();
+    },
+    search: function search() {
+      //apabila value dari search berubha
+      //   maka akan req berdasarkan data search
+      thi.getOutlets(this.search);
+    }
+  },
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)("outlet", ["getOutlets", "removeOutlet"])), {}, {
     // ketika tombol remove/delete/hapus di klik, aka akan menjalankan method ini
     deleteOutlet: function deleteOutlet(id) {
@@ -283,7 +293,7 @@ var render = function () {
             "router-link",
             {
               staticClass: "btn btn-primary btn-sm btn-flat",
-              attrs: { to: { name: "outlets.add" } },
+              attrs: { to: { name: "OutletAdd" } },
             },
             [_vm._v("Add Outlet")]
           ),
@@ -330,22 +340,22 @@ var render = function () {
             },
             scopedSlots: _vm._u([
               {
-                key: "status",
-                fn: function (row) {
+                key: "cell(status)",
+                fn: function (data) {
                   return [
-                    row.item.status === 1
-                      ? _c("span", { staticClass: "label label-success" }, [
+                    data.item.status == 1
+                      ? _c("span", { staticClass: "badge badge-success" }, [
                           _vm._v("Active"),
                         ])
-                      : _c("span", { staticClass: "label label-default" }, [
+                      : _c("span", { staticClass: "badge badge-default" }, [
                           _vm._v("Inactive"),
                         ]),
                   ]
                 },
               },
               {
-                key: "actions",
-                fn: function (row) {
+                key: "cell(actions)",
+                fn: function (data) {
                   return [
                     _c(
                       "router-link",
@@ -353,8 +363,8 @@ var render = function () {
                         staticClass: "btn btn-warning btn-sm",
                         attrs: {
                           to: {
-                            name: "outlets.edit",
-                            params: { id: row.item.code },
+                            name: "OutletEdit",
+                            params: { id: data.item.id },
                           },
                         },
                       },
@@ -367,7 +377,7 @@ var render = function () {
                         staticClass: "btn btn-danger btn-sm",
                         on: {
                           click: function ($event) {
-                            return _vm.deleteOutlets(row.item.id)
+                            return _vm.deleteOutlet(data.item.id)
                           },
                         },
                       },
@@ -392,7 +402,7 @@ var render = function () {
                         _vm._s(_vm.outlets.data.length) +
                         " of " +
                         _vm._s(_vm.outlets.meta.total) +
-                        "\n          "
+                        " total data\n          "
                     ),
                   ])
                 : _vm._e(),
