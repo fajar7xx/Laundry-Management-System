@@ -55,9 +55,9 @@ const actions = {
             const response = await API.get(
                 `/outlets?page${state.page}&q=${search}`
             );
-            console.group("outlets data");
-            console.log("response data: ", response.data);
-            console.groupEnd();
+            // console.group("outlets data");
+            // console.log("response data: ", response.data);
+            // console.groupEnd();
             commit("ASSIGN_DATA", response.data);
         } catch (error) {
             console.group("error for get outlets data");
@@ -71,6 +71,11 @@ const actions = {
             const response = await API.post("/outlets", state.outlet);
             commit("CLEAR_FORM");
             dispatch("getOutlets");
+            const notification = {
+                type: "success",
+                message: "Outlet has been successfully added.",
+            };
+            dispatch("notification/add", notification, { root: true });
             // await dispatch("getOutlets");
             // dispatch("getOutlets").then(() => {
             //     response.data;
@@ -89,10 +94,14 @@ const actions = {
             throw error;
         }
     },
-    async editOutlet({ comit }, payload) {
+    async editOutlet({ commit }, id) {
         try {
-            const response = await OutletService.getOutlet(payload);
-            commit("CLEAR_FORM");
+            const response = await OutletService.getOutlet(id);
+            // console.group("edit data");
+            // console.log(response.data);
+            // console.log(response.data.data);
+            // console.groupEnd();
+            commit("ASSIGN_FORM", response.data.data);
         } catch (error) {
             console.group("error for edit outlet");
             console.log(error);
@@ -101,12 +110,24 @@ const actions = {
             throw error;
         }
     },
-    async removeOutlet({ commit }, payload) {
+    async updateOutlet({ commit, state }, id) {
         try {
-            const response = await OutletService.deleteOutlet(payload);
+            const response = await OutletService.updateOutlet(id, state.outlet);
+            commit("CLEAR_FORM");
+        } catch (error) {
+            console.group("error for update outlet");
+            console.log(error);
+            console.log(error.response);
+            console.groupEnd();
+            throw error;
+        }
+    },
+    async removeOutlet({ dispatch }, id) {
+        try {
+            const response = await OutletService.deleteOutlet(id);
             dispatch("getOutlets");
         } catch (error) {
-            onsole.group("error for remove outlet");
+            console.group("error for remove outlet");
             console.log(error);
             console.log(error.response);
             console.groupEnd();

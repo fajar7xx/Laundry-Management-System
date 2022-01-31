@@ -2786,7 +2786,7 @@ vue__WEBPACK_IMPORTED_MODULE_9__["default"].use(bootstrap_vue__WEBPACK_IMPORTED_
 vue__WEBPACK_IMPORTED_MODULE_9__["default"].use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_11__.IconsPlugin);
 var swalOptions = {
   confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#dd3"
+  cancelButtonColor: "#d33"
 };
 vue__WEBPACK_IMPORTED_MODULE_9__["default"].use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_7___default()), swalOptions);
 var app = new vue__WEBPACK_IMPORTED_MODULE_9__["default"]({
@@ -2990,7 +2990,7 @@ var OutletService = {
   createOutlet: function createOutlet(payload) {
     return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].post("/outlets", payload);
   },
-  updateOutlet: function updateOutlet(payload, id) {
+  updateOutlet: function updateOutlet(id, payload) {
     return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].put("/outlets/".concat(id), payload);
   },
   deleteOutlet: function deleteOutlet(id) {
@@ -3064,12 +3064,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var vuex_persistedstate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-persistedstate */ "./node_modules/vuex-persistedstate/dist/vuex-persistedstate.es.js");
 /* harmony import */ var _services_TokenService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/TokenService */ "./resources/js/services/TokenService.js");
 /* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth.js");
 /* harmony import */ var _modules_outlet__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/outlet */ "./resources/js/store/modules/outlet.js");
+/* harmony import */ var _modules_notification__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/notification */ "./resources/js/store/modules/notification.js");
 
  // plugin
 // library that saves our Vuex data between page reloads.
@@ -3079,13 +3080,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_4__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_5__["default"]);
+
+vue__WEBPACK_IMPORTED_MODULE_5__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_6__["default"]);
 var tokenService = _services_TokenService__WEBPACK_IMPORTED_MODULE_1__["default"].getService();
-var store = new vuex__WEBPACK_IMPORTED_MODULE_5__["default"].Store({
+var store = new vuex__WEBPACK_IMPORTED_MODULE_6__["default"].Store({
   // all modules
   modules: {
     auth: _modules_auth__WEBPACK_IMPORTED_MODULE_2__["default"],
-    outlet: _modules_outlet__WEBPACK_IMPORTED_MODULE_3__["default"]
+    outlet: _modules_outlet__WEBPACK_IMPORTED_MODULE_3__["default"],
+    notification: _modules_notification__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   state: {
     // token: localStorage.getItem("token"),
@@ -3333,6 +3336,60 @@ var getters = {};
 
 /***/ }),
 
+/***/ "./resources/js/store/modules/notification.js":
+/*!****************************************************!*\
+  !*** ./resources/js/store/modules/notification.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var nextId = 1;
+var state = {
+  notifications: []
+};
+var mutations = {
+  PUSH: function PUSH(state, notification) {
+    state.notification.push(_objectSpread(_objectSpread({}, notification), {}, {
+      id: nextId++
+    }));
+  },
+  DELETE: function DELETE(state, notificationToRemove) {
+    state.notification = state.notification.filter(function (notification) {
+      return notification.id !== notificationToRemove.id;
+    });
+  }
+};
+var actions = {
+  add: function add(_ref, payload) {
+    var commit = _ref.commit;
+    commit("PUSH", payload);
+  },
+  remove: function remove(_ref2, payload) {
+    var commit = _ref2.commit;
+    commit("DELETE", payload);
+  }
+};
+var getters = {};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  namespaced: true,
+  state: state,
+  mutations: mutations,
+  actions: actions,
+  getters: getters
+});
+
+/***/ }),
+
 /***/ "./resources/js/store/modules/outlet.js":
 /*!**********************************************!*\
   !*** ./resources/js/store/modules/outlet.js ***!
@@ -3418,32 +3475,32 @@ var actions = {
 
             case 5:
               response = _context.sent;
-              console.group("outlets data");
-              console.log("response data: ", response.data);
-              console.groupEnd();
+              // console.group("outlets data");
+              // console.log("response data: ", response.data);
+              // console.groupEnd();
               commit("ASSIGN_DATA", response.data);
-              _context.next = 17;
+              _context.next = 14;
               break;
 
-            case 12:
-              _context.prev = 12;
+            case 9:
+              _context.prev = 9;
               _context.t0 = _context["catch"](2);
               console.group("error for get outlets data");
               console.log(_context.t0);
               console.groupEnd();
 
-            case 17:
+            case 14:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[2, 12]]);
+      }, _callee, null, [[2, 9]]);
     }))();
   },
   // tambah outlet
   submitOutlet: function submitOutlet(_ref2) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var dispatch, commit, state, response;
+      var dispatch, commit, state, response, notification;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -3456,16 +3513,23 @@ var actions = {
             case 4:
               response = _context2.sent;
               commit("CLEAR_FORM");
-              dispatch("getOutlets"); // await dispatch("getOutlets");
+              dispatch("getOutlets");
+              notification = {
+                type: "success",
+                message: "Outlet has been successfully added."
+              };
+              dispatch("notification/add", notification, {
+                root: true
+              }); // await dispatch("getOutlets");
               // dispatch("getOutlets").then(() => {
               //     response.data;
               // });
 
-              _context2.next = 17;
+              _context2.next = 19;
               break;
 
-            case 9:
-              _context2.prev = 9;
+            case 11:
+              _context2.prev = 11;
               _context2.t0 = _context2["catch"](1);
               console.group("error for post outlets data");
               console.log(_context2.t0);
@@ -3481,29 +3545,33 @@ var actions = {
 
               throw _context2.t0;
 
-            case 17:
+            case 19:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[1, 9]]);
+      }, _callee2, null, [[1, 11]]);
     }))();
   },
-  editOutlet: function editOutlet(_ref3, payload) {
+  editOutlet: function editOutlet(_ref3, id) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-      var comit, response;
+      var commit, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              comit = _ref3.comit;
+              commit = _ref3.commit;
               _context3.prev = 1;
               _context3.next = 4;
-              return _services_OutletService__WEBPACK_IMPORTED_MODULE_2__["default"].getOutlet(payload);
+              return _services_OutletService__WEBPACK_IMPORTED_MODULE_2__["default"].getOutlet(id);
 
             case 4:
               response = _context3.sent;
-              commit("CLEAR_FORM");
+              // console.group("edit data");
+              // console.log(response.data);
+              // console.log(response.data.data);
+              // console.groupEnd();
+              commit("ASSIGN_FORM", response.data.data);
               _context3.next = 15;
               break;
 
@@ -3524,28 +3592,28 @@ var actions = {
       }, _callee3, null, [[1, 8]]);
     }))();
   },
-  removeOutlet: function removeOutlet(_ref4, payload) {
+  updateOutlet: function updateOutlet(_ref4, id) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
-      var commit, response;
+      var commit, state, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              commit = _ref4.commit;
+              commit = _ref4.commit, state = _ref4.state;
               _context4.prev = 1;
               _context4.next = 4;
-              return _services_OutletService__WEBPACK_IMPORTED_MODULE_2__["default"].deleteOutlet(payload);
+              return _services_OutletService__WEBPACK_IMPORTED_MODULE_2__["default"].updateOutlet(id, state.outlet);
 
             case 4:
               response = _context4.sent;
-              dispatch("getOutlets");
+              commit("CLEAR_FORM");
               _context4.next = 15;
               break;
 
             case 8:
               _context4.prev = 8;
               _context4.t0 = _context4["catch"](1);
-              onsole.group("error for remove outlet");
+              console.group("error for update outlet");
               console.log(_context4.t0);
               console.log(_context4.t0.response);
               console.groupEnd();
@@ -3557,6 +3625,41 @@ var actions = {
           }
         }
       }, _callee4, null, [[1, 8]]);
+    }))();
+  },
+  removeOutlet: function removeOutlet(_ref5, id) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+      var dispatch, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              dispatch = _ref5.dispatch;
+              _context5.prev = 1;
+              _context5.next = 4;
+              return _services_OutletService__WEBPACK_IMPORTED_MODULE_2__["default"].deleteOutlet(id);
+
+            case 4:
+              response = _context5.sent;
+              dispatch("getOutlets");
+              _context5.next = 15;
+              break;
+
+            case 8:
+              _context5.prev = 8;
+              _context5.t0 = _context5["catch"](1);
+              console.group("error for remove outlet");
+              console.log(_context5.t0);
+              console.log(_context5.t0.response);
+              console.groupEnd();
+              throw _context5.t0;
+
+            case 15:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, null, [[1, 8]]);
     }))();
   }
 };

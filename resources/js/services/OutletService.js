@@ -13,7 +13,7 @@ const OutletService = {
         return API.post(`/outlets`, payload);
     },
 
-    updateOutlet(payload, id) {
+    updateOutlet(id, payload) {
         return API.put(`/outlets/${id}`, payload);
     },
 

@@ -1,9 +1,9 @@
 tutorial:
     ✔ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-1-schema-database @done(22-01-13 17:52)
     ✔ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-2-templating-authentication @done(22-01-26 23:14)
-    ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-3-management-outlets
-        ☐ https://youtu.be/QdCCTIg5_E0?list=PLqVuTr0mmtloEmc6QB-THjN5OILpS5g5j&t=1035 17:15
-        ☐ https://youtu.be/QdCCTIg5_E0?list=PLqVuTr0mmtloEmc6QB-THjN5OILpS5g5j&t=1304 21:44
+    ✔ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-3-management-outlets @done(22-01-31 21:18)
+        ✔ https://youtu.be/QdCCTIg5_E0?list=PLqVuTr0mmtloEmc6QB-THjN5OILpS5g5j&t=1035 17:15 @done(22-01-31 21:18)
+        ✔ https://youtu.be/QdCCTIg5_E0?list=PLqVuTr0mmtloEmc6QB-THjN5OILpS5g5j&t=1304 21:44 @done(22-01-31 21:18)
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-4-management-couriers
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-5-manage-laundry-products
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-6-role-user-permissions
@@ -47,3 +47,6 @@ baca ini:
 
 channel youtube terkait vuejs:
     ☐ https://www.youtube.com/c/ProgramWithErik/videos
+
+tambahan fitur:
+    ☐ kasih pesan kalau berhasil di hapus

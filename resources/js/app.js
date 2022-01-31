@@ -29,7 +29,7 @@ Vue.use(IconsPlugin);
 
 const swalOptions = {
     confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#dd3",
+    cancelButtonColor: "#d33",
 };
 Vue.use(VueSweetalert2, swalOptions);
 

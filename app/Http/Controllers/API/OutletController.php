@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OutletStoreFormRequest;
+use App\Http\Requests\OutletUpdateFormRequest;
 use App\Http\Resources\OutletCollection;
 use App\Http\Resources\OutletResource;
 use App\Models\Outlet;
@@ -55,9 +56,9 @@ class OutletController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Outlet $outlet)
     {
-        //
+        return new OutletResource($outlet);
     }
 
     /**
@@ -67,9 +68,14 @@ class OutletController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(OutletUpdateFormRequest $request, Outlet $outlet)
     {
-        //
+        $outlet->name    = $request->name;
+        $outlet->address = $request->address;
+        $outlet->phone   = $request->phone;
+        $outlet->save();
+
+        return new OutletResource($outlet);
     }
 
     /**
@@ -78,8 +84,9 @@ class OutletController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Outlet $outlet)
     {
-        //
+        $outlet->delete();
+        return new OutletResource($outlet);
     }
 }

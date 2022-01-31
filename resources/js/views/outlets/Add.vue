@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
-import OutletForm from "./components/OutletForm.vue";
+import { mapActions } from "vuex";
+import OutletForm from "./components/OutletForm";
 export default {
   components: {
     OutletForm,

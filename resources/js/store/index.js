@@ -9,6 +9,7 @@ import TokenService from "../services/TokenService";
 // import all store modules
 import auth from "./modules/auth";
 import outlet from "./modules/outlet";
+import notification from "./modules/notification";
 
 Vue.use(Vuex);
 
@@ -18,6 +19,7 @@ const store = new Vuex.Store({
     modules: {
         auth,
         outlet,
+        notification,
     },
 
     state: {

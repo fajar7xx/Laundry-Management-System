@@ -141,7 +141,7 @@ export default {
     search() {
       //apabila value dari search berubha
       //   maka akan req berdasarkan data search
-      thi.getOutlets(this.search);
+      this.getOutlets(this.search);
     },
   },
   methods: {
@@ -161,7 +161,20 @@ export default {
         //   jika setujui
         if (result.value) {
           // jalankan fungsi removeoutlet
-          this.removeOutlet(id);
+          this.removeOutlet(id).then(() => {
+            this.$swal({
+              toast: true,
+              position: "top-end",
+              icon: "success",
+              title: "Item has been successfully deleted",
+              //   title: "Success",
+              //   text: "Item has been successfully deleted",
+              timer: 2000,
+              timerProgressBar: true,
+              showConfirmButton: false,
+              width: 400,
+            });
+          });
         }
       });
     },
@@ -169,5 +182,5 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>
