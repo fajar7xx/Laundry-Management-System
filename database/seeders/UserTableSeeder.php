@@ -25,6 +25,8 @@ class UserTableSeeder extends Seeder
             'role'              => 0,
             'outlet_id'         => 1
         ]);
+
+        User::factory()->count(20)->create();
         Schema::enableForeignKeyConstraints();
     }
 }

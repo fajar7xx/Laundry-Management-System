@@ -46,6 +46,17 @@ export default {
       this.updateOutlet(this.$route.params.id)
         .then(() => {
           this.$router.push({ name: "OutletData" });
+          setTimeout(() => {
+            this.$swal({
+              toast: true,
+              position: "top-end",
+              icon: "success",
+              title: "Outlet has been successfully Updated",
+              timer: 3000,
+              timerProgressBar: true,
+              showConfirmButton: false,
+            });
+          }, 1000);
         })
         .catch((error) => {
           console.log(error);

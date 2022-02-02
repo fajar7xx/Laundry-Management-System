@@ -44,4 +44,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $perPage = 10;
+
+    // scope or where clause in short
+    public function scopeCourier($query)
+    {
+        return $query->where('role', 3);
+    }
+
+    // relationship
+    public function outlet()
+    {
+        return $this->belongsTo(Outlet::class, 'outlet_id', 'id');
+    }
 }

@@ -28,6 +28,7 @@ Route::group([
     Route::get('logout', [AuthController::class, 'logout']);
 
     Route::apiResource('outlets', OutletController::class);
+    Route::apiResource('couriers', UserController::class);
 
     Route::get('/user', function (Request $request) {
         return $request->user();

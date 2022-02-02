@@ -51,7 +51,7 @@
             <span class="badge badge-success" v-if="data.item.status == 1"
               >Active</span
             >
-            <span class="badge badge-default" v-else>Inactive</span>
+            <span class="badge badge-secondary" v-else>Inactive</span>
           </template>
           <template #cell(actions)="data">
             <router-link

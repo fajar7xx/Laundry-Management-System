@@ -86,8 +86,10 @@ export default {
     }),
   },
   methods: {
-    ...mapMutations("outlet", ["CLEAR_FORM"]), //panggil mutation ini untuk clear form
-    ...mapMutations("CLEAR_ERRORS"),
+    // ...mapMutations("outlet", ["CLEAR_FORM"]), //panggil mutation ini untuk clear form
+    // ...mapMutations("CLEAR_ERRORS"),
+    // ...mapMutations(["outlet/CLEAR_FORM", "CLEAR_ERRORS"]),
+    ...mapMutations("outlet", ["CLEAR_FORM"]),
   },
   created() {
     // this.CLEAR_ERRORS();

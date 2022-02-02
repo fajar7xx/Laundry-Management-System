@@ -360,7 +360,7 @@ var render = function () {
                       ? _c("span", { staticClass: "badge badge-success" }, [
                           _vm._v("Active"),
                         ])
-                      : _c("span", { staticClass: "badge badge-default" }, [
+                      : _c("span", { staticClass: "badge badge-secondary" }, [
                           _vm._v("Inactive"),
                         ]),
                   ]

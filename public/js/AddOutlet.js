@@ -61,10 +61,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       this.submitOutlet().then(function () {
+        //   this.$swal({
+        //     toast: true,
+        //     position: "top-end",
+        //     icon: "success",
+        //     title: "Item has been successfully added",
+        //     timer: 2000,
+        //     timerProgressBar: true,
+        //     showConfirmButton: false,
+        //     width: 400,
+        //   }).then(() => {
+        //     this.$router.push({ name: "OutletData" });
+        //   });
         _this.$router.push({
           name: "OutletData"
-        }); //   console.log("berhasil nih");
+        });
 
+        setTimeout(function () {
+          _this.$swal({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            icon: "success",
+            title: "Outlet has been successfully added"
+          });
+        }, 1000); //   console.log("berhasil nih");
       })["catch"](function (error) {
         console.log(error);
       });
@@ -177,7 +200,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     } //mengambil state outle pada module outlet
 
   })),
-  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapMutations)("outlet", ["CLEAR_FORM"])), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapMutations)("CLEAR_ERRORS")),
+  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapMutations)("outlet", ["CLEAR_FORM"])),
   created: function created() {// this.CLEAR_ERRORS();
   },
   //ketika page ini di tinggalkan atau destroyed

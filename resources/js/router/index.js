@@ -19,6 +19,9 @@ const ADD_OUTLET = () =>
 const EDIT_OUTLET = () =>
     import(/* webpackChunkName: "EditOutlet"*/ "../views/outlets/Edit");
 
+const INDEX_COURIER = () =>
+    import(/* webpackChunkName: "IndexCourier"*/ "../views/courier/Index");
+
 Vue.use(VueRouter);
 
 // define routes
@@ -76,6 +79,14 @@ const routes = [
                 },
             },
         ],
+    },
+    {
+        path: "/courier",
+        component: INDEX_COURIER,
+        meta: {
+            requiresAuth: true,
+        },
+        children: [],
     },
     {
         path: "*s",

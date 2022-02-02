@@ -41,7 +41,30 @@ export default {
     submitForm() {
       this.submitOutlet()
         .then(() => {
+          //   this.$swal({
+          //     toast: true,
+          //     position: "top-end",
+          //     icon: "success",
+          //     title: "Item has been successfully added",
+          //     timer: 2000,
+          //     timerProgressBar: true,
+          //     showConfirmButton: false,
+          //     width: 400,
+          //   }).then(() => {
+          //     this.$router.push({ name: "OutletData" });
+          //   });
           this.$router.push({ name: "OutletData" });
+          setTimeout(() => {
+            this.$swal({
+              toast: true,
+              position: "top-end",
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              icon: "success",
+              title: "Outlet has been successfully added",
+            });
+          }, 1000);
           //   console.log("berhasil nih");
         })
         .catch((error) => {

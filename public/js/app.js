@@ -2847,6 +2847,10 @@ var EDIT_OUTLET = function EDIT_OUTLET() {
   return __webpack_require__.e(/*! import() | EditOutlet */ "EditOutlet").then(__webpack_require__.bind(__webpack_require__, /*! ../views/outlets/Edit */ "./resources/js/views/outlets/Edit.vue"));
 };
 
+var INDEX_COURIER = function INDEX_COURIER() {
+  return __webpack_require__.e(/*! import() | IndexCourier */ "IndexCourier").then(__webpack_require__.bind(__webpack_require__, /*! ../views/courier/Index */ "./resources/js/views/courier/Index.vue"));
+};
+
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]); // define routes
 
 var routes = [{
@@ -2897,6 +2901,13 @@ var routes = [{
       title: "Edit OUtlet"
     }
   }]
+}, {
+  path: "/courier",
+  component: INDEX_COURIER,
+  meta: {
+    requiresAuth: true
+  },
+  children: []
 }, {
   path: "*s",
   name: "NotFound",
@@ -3471,7 +3482,7 @@ var actions = {
               search = typeof payload != "undefined" ? payload : "";
               _context.prev = 2;
               _context.next = 5;
-              return _utils_api__WEBPACK_IMPORTED_MODULE_1__["default"].get("/outlets?page".concat(state.page, "&q=").concat(search));
+              return _utils_api__WEBPACK_IMPORTED_MODULE_1__["default"].get("/outlets?page=".concat(state.page, "&q=").concat(search));
 
             case 5:
               response = _context.sent;
@@ -3513,23 +3524,22 @@ var actions = {
             case 4:
               response = _context2.sent;
               commit("CLEAR_FORM");
-              dispatch("getOutlets");
+              dispatch("getOutlets"); // send notification success
+
               notification = {
                 type: "success",
                 message: "Outlet has been successfully added."
-              };
-              dispatch("notification/add", notification, {
-                root: true
-              }); // await dispatch("getOutlets");
+              }; // dispatch("notification/add", notification, { root: true });
+              // await dispatch("getOutlets");
               // dispatch("getOutlets").then(() => {
               //     response.data;
               // });
 
-              _context2.next = 19;
+              _context2.next = 18;
               break;
 
-            case 11:
-              _context2.prev = 11;
+            case 10:
+              _context2.prev = 10;
               _context2.t0 = _context2["catch"](1);
               console.group("error for post outlets data");
               console.log(_context2.t0);
@@ -3545,12 +3555,12 @@ var actions = {
 
               throw _context2.t0;
 
-            case 19:
+            case 18:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[1, 11]]);
+      }, _callee2, null, [[1, 10]]);
     }))();
   },
   editOutlet: function editOutlet(_ref3, id) {
@@ -69150,7 +69160,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
 /******/ 			if (chunkId === "Home") return "js/Home.js";
-/******/ 			if ({"Login":1,"Error404":1,"IndexOutlet":1,"DataOutlet":1,"AddOutlet":1,"EditOutlet":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"Login":1,"Error404":1,"IndexOutlet":1,"DataOutlet":1,"AddOutlet":1,"EditOutlet":1,"IndexCourier":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

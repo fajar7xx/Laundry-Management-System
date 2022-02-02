@@ -53,7 +53,7 @@ const actions = {
         let search = typeof payload != "undefined" ? payload : "";
         try {
             const response = await API.get(
-                `/outlets?page${state.page}&q=${search}`
+                `/outlets?page=${state.page}&q=${search}`
             );
             // console.group("outlets data");
             // console.log("response data: ", response.data);
@@ -71,11 +71,14 @@ const actions = {
             const response = await API.post("/outlets", state.outlet);
             commit("CLEAR_FORM");
             dispatch("getOutlets");
+
+            // send notification success
             const notification = {
                 type: "success",
                 message: "Outlet has been successfully added.",
             };
-            dispatch("notification/add", notification, { root: true });
+            // dispatch("notification/add", notification, { root: true });
+
             // await dispatch("getOutlets");
             // dispatch("getOutlets").then(() => {
             //     response.data;

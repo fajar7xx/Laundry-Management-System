@@ -70,6 +70,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this.$router.push({
           name: "OutletData"
         });
+
+        setTimeout(function () {
+          _this.$swal({
+            toast: true,
+            position: "top-end",
+            icon: "success",
+            title: "Outlet has been successfully Updated",
+            timer: 3000,
+            timerProgressBar: true,
+            showConfirmButton: false
+          });
+        }, 1000);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -182,7 +194,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     } //mengambil state outle pada module outlet
 
   })),
-  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapMutations)("outlet", ["CLEAR_FORM"])), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapMutations)("CLEAR_ERRORS")),
+  methods: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapMutations)("outlet", ["CLEAR_FORM"])),
   created: function created() {// this.CLEAR_ERRORS();
   },
   //ketika page ini di tinggalkan atau destroyed

@@ -18,4 +18,10 @@ class Outlet extends Model
         'phone'
     ];
     protected $perPage = 10;
+
+    // relationship
+    public function couriers()
+    {
+        return $this->hasMany(User::class, 'outlet_id');
+    }
 }
