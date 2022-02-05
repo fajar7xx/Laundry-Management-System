@@ -2,7 +2,7 @@ import API from "../utils/api";
 
 const OutletService = {
     getOutlets(page, search) {
-        return API.get(`/outlets?page${page}&q=${search}`);
+        return API.get(`/outlets?page=${page}&q=${search}`);
     },
 
     getOutlet(id) {

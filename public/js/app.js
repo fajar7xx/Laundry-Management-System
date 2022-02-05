@@ -2443,233 +2443,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   methods: {
     logout: function logout() {
@@ -2748,21 +2521,26 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App */ "./resources/js/App.vue");
-/* harmony import */ var _layouts_Default_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./layouts/Default.vue */ "./resources/js/layouts/Default.vue");
-/* harmony import */ var _layouts_Blank_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./layouts/Blank.vue */ "./resources/js/layouts/Blank.vue");
-/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
-/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/icons/plugin.js");
-/* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.css */ "./node_modules/bootstrap/dist/css/bootstrap.css");
-/* harmony import */ var bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! bootstrap-vue/dist/bootstrap-vue.css */ "./node_modules/bootstrap-vue/dist/bootstrap-vue.css");
-/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/vue-sweetalert.umd.js");
-/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
+/* harmony import */ var _helpers_GetImageHelper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers/GetImageHelper */ "./resources/js/helpers/GetImageHelper.js");
+/* harmony import */ var _layouts_Default_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./layouts/Default.vue */ "./resources/js/layouts/Default.vue");
+/* harmony import */ var _layouts_Blank_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./layouts/Blank.vue */ "./resources/js/layouts/Blank.vue");
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
+/* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/icons/plugin.js");
+/* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.css */ "./node_modules/bootstrap/dist/css/bootstrap.css");
+/* harmony import */ var bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! bootstrap-vue/dist/bootstrap-vue.css */ "./node_modules/bootstrap-vue/dist/bootstrap-vue.css");
+/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/vue-sweetalert.umd.js");
+/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 
 
+
+ // helpers
+// ketikha membuat helper dan plugin
+// ref https://vuejs.org/v2/guide/plugins.html
 
  // import layout for specific needed
 
@@ -2778,18 +2556,18 @@ __webpack_require__.r(__webpack_exports__);
 
  // layout initialize in component global
 
-vue__WEBPACK_IMPORTED_MODULE_9__["default"].component("default-layout", _layouts_Default_vue__WEBPACK_IMPORTED_MODULE_3__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_9__["default"].component("blank-layout", _layouts_Blank_vue__WEBPACK_IMPORTED_MODULE_4__["default"]); // Make BootstrapVue available throughout your project
+vue__WEBPACK_IMPORTED_MODULE_10__["default"].component("default-layout", _layouts_Default_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_10__["default"].component("blank-layout", _layouts_Blank_vue__WEBPACK_IMPORTED_MODULE_5__["default"]); // Make BootstrapVue available throughout your project
 
-vue__WEBPACK_IMPORTED_MODULE_9__["default"].use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_10__.BootstrapVue); // Optionally install the BootstrapVue icon components plugin
+vue__WEBPACK_IMPORTED_MODULE_10__["default"].use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_11__.BootstrapVue); // Optionally install the BootstrapVue icon components plugin
 
-vue__WEBPACK_IMPORTED_MODULE_9__["default"].use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_11__.IconsPlugin);
+vue__WEBPACK_IMPORTED_MODULE_10__["default"].use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_12__.IconsPlugin);
 var swalOptions = {
   confirmButtonColor: "#3085d6",
   cancelButtonColor: "#d33"
 };
-vue__WEBPACK_IMPORTED_MODULE_9__["default"].use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_7___default()), swalOptions);
-var app = new vue__WEBPACK_IMPORTED_MODULE_9__["default"]({
+vue__WEBPACK_IMPORTED_MODULE_10__["default"].use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_8___default()), swalOptions);
+var app = new vue__WEBPACK_IMPORTED_MODULE_10__["default"]({
   el: "#app",
   router: _router__WEBPACK_IMPORTED_MODULE_0__["default"],
   store: _store__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -2797,6 +2575,35 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_9__["default"]({
     return h(_App__WEBPACK_IMPORTED_MODULE_2__["default"]);
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/helpers/GetImageHelper.js":
+/*!************************************************!*\
+  !*** ./resources/js/helpers/GetImageHelper.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+
+
+ // referensi
+// https://vuejs.org/v2/guide/plugins.html
+
+var GetImageHelper = {
+  install: function install(Vue, options) {
+    Vue.prototype.getImage = function (image) {
+      if (image != null && image.length > 0 && image != undefined) {
+        return "/storage/couriers/".concat(image);
+      }
+
+      return "https://plchldr.co/i/80x50?text=test&fc=000";
+    };
+  }
+};
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(GetImageHelper);
 
 /***/ }),
 
@@ -2851,6 +2658,18 @@ var INDEX_COURIER = function INDEX_COURIER() {
   return __webpack_require__.e(/*! import() | IndexCourier */ "IndexCourier").then(__webpack_require__.bind(__webpack_require__, /*! ../views/courier/Index */ "./resources/js/views/courier/Index.vue"));
 };
 
+var DATA_COURIER = function DATA_COURIER() {
+  return __webpack_require__.e(/*! import() | DataCourier */ "DataCourier").then(__webpack_require__.bind(__webpack_require__, /*! ../views/courier/Data */ "./resources/js/views/courier/Data.vue"));
+};
+
+var ADD_COURIER = function ADD_COURIER() {
+  return __webpack_require__.e(/*! import() | AddCourier */ "AddCourier").then(__webpack_require__.bind(__webpack_require__, /*! ../views/courier/Add */ "./resources/js/views/courier/Add.vue"));
+};
+
+var EDIT_COURIER = function EDIT_COURIER() {
+  return __webpack_require__.e(/*! import() | EditCourier */ "EditCourier").then(__webpack_require__.bind(__webpack_require__, /*! ../views/courier/Edit */ "./resources/js/views/courier/Edit.vue"));
+};
+
 vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]); // define routes
 
 var routes = [{
@@ -2902,12 +2721,33 @@ var routes = [{
     }
   }]
 }, {
-  path: "/courier",
+  path: "/couriers",
   component: INDEX_COURIER,
   meta: {
     requiresAuth: true
   },
-  children: []
+  children: [{
+    path: "",
+    name: "CourierData",
+    component: DATA_COURIER,
+    meta: {
+      title: "Manage Courier"
+    }
+  }, {
+    path: "add",
+    name: "CourierAdd",
+    component: ADD_COURIER,
+    meta: {
+      title: "Add New Courier"
+    }
+  }, {
+    path: "edit/:id",
+    name: "CourierEdit",
+    component: EDIT_COURIER,
+    meta: {
+      title: "Edit Courier"
+    }
+  }]
 }, {
   path: "*s",
   name: "NotFound",
@@ -2978,6 +2818,45 @@ var AuthService = {
 
 /***/ }),
 
+/***/ "./resources/js/services/CourierService.js":
+/*!*************************************************!*\
+  !*** ./resources/js/services/CourierService.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _utils_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/api */ "./resources/js/utils/api.js");
+
+var HEADERS = {
+  headers: {
+    "Content-Type": "multipart/form-data"
+  }
+};
+var CourierService = {
+  getCouriers: function getCouriers(page, search) {
+    return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].get("/couriers?page=".concat(page, "&q=").concat(search));
+  },
+  getCourier: function getCourier(id) {
+    return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].get("/couriers/".concat(id));
+  },
+  createCourier: function createCourier(payload) {
+    return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].post("/couriers", payload, HEADERS);
+  },
+  updateCourier: function updateCourier(id, payload) {
+    return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].put("/couriers/".concat(id), payload, HEADERS);
+  },
+  deleteCourier: function deleteCourier(id) {
+    return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]("/couriers/".concat(id));
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CourierService);
+
+/***/ }),
+
 /***/ "./resources/js/services/OutletService.js":
 /*!************************************************!*\
   !*** ./resources/js/services/OutletService.js ***!
@@ -2993,7 +2872,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var OutletService = {
   getOutlets: function getOutlets(page, search) {
-    return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].get("/outlets?page".concat(page, "&q=").concat(search));
+    return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].get("/outlets?page=".concat(page, "&q=").concat(search));
   },
   getOutlet: function getOutlet(id) {
     return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].get("/outlets/".concat(id));
@@ -3075,13 +2954,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var vuex_persistedstate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-persistedstate */ "./node_modules/vuex-persistedstate/dist/vuex-persistedstate.es.js");
 /* harmony import */ var _services_TokenService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/TokenService */ "./resources/js/services/TokenService.js");
 /* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth.js");
 /* harmony import */ var _modules_outlet__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/outlet */ "./resources/js/store/modules/outlet.js");
 /* harmony import */ var _modules_notification__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/notification */ "./resources/js/store/modules/notification.js");
+/* harmony import */ var _modules_courier__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/courier */ "./resources/js/store/modules/courier.js");
 
  // plugin
 // library that saves our Vuex data between page reloads.
@@ -3092,14 +2972,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_5__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_6__["default"]);
+
+vue__WEBPACK_IMPORTED_MODULE_6__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_7__["default"]);
 var tokenService = _services_TokenService__WEBPACK_IMPORTED_MODULE_1__["default"].getService();
-var store = new vuex__WEBPACK_IMPORTED_MODULE_6__["default"].Store({
+var store = new vuex__WEBPACK_IMPORTED_MODULE_7__["default"].Store({
   // all modules
   modules: {
     auth: _modules_auth__WEBPACK_IMPORTED_MODULE_2__["default"],
     outlet: _modules_outlet__WEBPACK_IMPORTED_MODULE_3__["default"],
-    notification: _modules_notification__WEBPACK_IMPORTED_MODULE_4__["default"]
+    notification: _modules_notification__WEBPACK_IMPORTED_MODULE_4__["default"],
+    courier: _modules_courier__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   state: {
     // token: localStorage.getItem("token"),
@@ -3347,6 +3229,263 @@ var getters = {};
 
 /***/ }),
 
+/***/ "./resources/js/store/modules/courier.js":
+/*!***********************************************!*\
+  !*** ./resources/js/store/modules/courier.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _services_CourierService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/CourierService */ "./resources/js/services/CourierService.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var state = {
+  couriers: [],
+  meta: [],
+  courier: {
+    name: "",
+    email: "",
+    password: "",
+    role: "",
+    photo: "",
+    outlet_id: ""
+  },
+  page: 1,
+  id: "",
+  totalRows: 0,
+  perPage: 0
+};
+var mutations = {
+  ASSIGN_DATA: function ASSIGN_DATA(state, payload) {
+    state.couriers = payload;
+  },
+  SET_PAGE: function SET_PAGE(state, payload) {
+    state.page = payload;
+  },
+  SET_ID_UPDATE: function SET_ID_UPDATE(state, payload) {
+    state.id = payload;
+  },
+  SET_TOTAL_ROWS: function SET_TOTAL_ROWS(state, payload) {
+    state.totalRows = payload;
+  },
+  SET_PER_PAGE: function SET_PER_PAGE(state, payload) {
+    state.perPage = payload;
+  },
+  SET_META: function SET_META(state, payload) {
+    state.meta = payload;
+  }
+};
+var actions = {
+  getCouriers: function getCouriers(_ref, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var commit, state, search, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              commit = _ref.commit, state = _ref.state;
+              search = typeof payload != "undefined" ? payload : "";
+              _context.prev = 2;
+              _context.next = 5;
+              return _services_CourierService__WEBPACK_IMPORTED_MODULE_1__["default"].getCouriers(state.page, search);
+
+            case 5:
+              response = _context.sent;
+              // console.group("fetching data");
+              // console.log(response.data);
+              // console.log(response.data.meta);
+              // console.groupEnd();
+              commit("ASSIGN_DATA", response.data);
+              commit("SET_TOTAL_ROWS", response.data.meta.total);
+              commit("SET_PER_PAGE", response.data.meta.per_page);
+              commit("SET_META", response.data.meta);
+              _context.next = 18;
+              break;
+
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context["catch"](2);
+              console.group("error for get couriers data");
+              console.log(_context.t0);
+              console.groupEnd();
+              throw _context.t0;
+
+            case 18:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[2, 12]]);
+    }))();
+  },
+  submitCourier: function submitCourier(_ref2, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var dispatch, commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              dispatch = _ref2.dispatch, commit = _ref2.commit;
+              _context2.prev = 1;
+              _context2.next = 4;
+              return _services_CourierService__WEBPACK_IMPORTED_MODULE_1__["default"].createCourier(payload);
+
+            case 4:
+              response = _context2.sent;
+              dispatch("getCouriers");
+              _context2.next = 16;
+              break;
+
+            case 8:
+              _context2.prev = 8;
+              _context2.t0 = _context2["catch"](1);
+              console.group("error for post courier data");
+              console.log(_context2.t0);
+              console.log(_context2.t0.response);
+              console.groupEnd();
+
+              if (_context2.t0.response.status === 422) {
+                console.log("error error error");
+                commit("SET_ERRORS", _context2.t0.response.data.errors, {
+                  root: true
+                });
+              }
+
+              throw _context2.t0;
+
+            case 16:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[1, 8]]);
+    }))();
+  },
+  getCourier: function getCourier(_ref3, id) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              commit = _ref3.commit;
+              _context3.prev = 1;
+              _context3.next = 4;
+              return _services_CourierService__WEBPACK_IMPORTED_MODULE_1__["default"].getCourier(id);
+
+            case 4:
+              response = _context3.sent;
+              return _context3.abrupt("return", response.data.data);
+
+            case 8:
+              _context3.prev = 8;
+              _context3.t0 = _context3["catch"](1);
+              console.group("error for get courier");
+              console.log(_context3.t0);
+              console.log(_context3.t0.response);
+              console.groupEnd();
+              throw _context3.t0;
+
+            case 15:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, null, [[1, 8]]);
+    }))();
+  },
+  updateCourier: function updateCourier(_ref4, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+      var state, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              state = _ref4.state;
+              _context4.prev = 1;
+              _context4.next = 4;
+              return _services_CourierService__WEBPACK_IMPORTED_MODULE_1__["default"].updateCourier(state.id, payload);
+
+            case 4:
+              response = _context4.sent;
+              _context4.next = 14;
+              break;
+
+            case 7:
+              _context4.prev = 7;
+              _context4.t0 = _context4["catch"](1);
+              console.group("error for update courier");
+              console.log(_context4.t0);
+              console.log(_context4.t0.response);
+              console.groupEnd();
+              throw _context4.t0;
+
+            case 14:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[1, 7]]);
+    }))();
+  },
+  removeCourier: function removeCourier(_ref5, id) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+      var dispatch, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              dispatch = _ref5.dispatch;
+              _context5.prev = 1;
+              _context5.next = 4;
+              return _services_CourierService__WEBPACK_IMPORTED_MODULE_1__["default"].deleteCourier(id);
+
+            case 4:
+              response = _context5.sent;
+              dispatch("getCouriers");
+              _context5.next = 15;
+              break;
+
+            case 8:
+              _context5.prev = 8;
+              _context5.t0 = _context5["catch"](1);
+              console.group("error for remove courier");
+              console.log(_context5.t0);
+              console.log(_context5.t0.response);
+              console.groupEnd();
+              throw _context5.t0;
+
+            case 15:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, null, [[1, 8]]);
+    }))();
+  }
+};
+var getters = {};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  namespaced: true,
+  state: state,
+  mutations: mutations,
+  actions: actions,
+  getters: getters
+});
+
+/***/ }),
+
 /***/ "./resources/js/store/modules/notification.js":
 /*!****************************************************!*\
   !*** ./resources/js/store/modules/notification.js ***!
@@ -3414,15 +3553,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/api */ "./resources/js/utils/api.js");
-/* harmony import */ var _services_OutletService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/OutletService */ "./resources/js/services/OutletService.js");
+/* harmony import */ var _services_OutletService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/OutletService */ "./resources/js/services/OutletService.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-
+// import API from "../../utils/api";
 
 var state = {
   outlets: [],
@@ -3482,7 +3620,7 @@ var actions = {
               search = typeof payload != "undefined" ? payload : "";
               _context.prev = 2;
               _context.next = 5;
-              return _utils_api__WEBPACK_IMPORTED_MODULE_1__["default"].get("/outlets?page=".concat(state.page, "&q=").concat(search));
+              return _services_OutletService__WEBPACK_IMPORTED_MODULE_1__["default"].getOutlets(state.page, search);
 
             case 5:
               response = _context.sent;
@@ -3511,7 +3649,7 @@ var actions = {
   // tambah outlet
   submitOutlet: function submitOutlet(_ref2) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var dispatch, commit, state, response, notification;
+      var dispatch, commit, state, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -3519,27 +3657,27 @@ var actions = {
               dispatch = _ref2.dispatch, commit = _ref2.commit, state = _ref2.state;
               _context2.prev = 1;
               _context2.next = 4;
-              return _utils_api__WEBPACK_IMPORTED_MODULE_1__["default"].post("/outlets", state.outlet);
+              return _services_OutletService__WEBPACK_IMPORTED_MODULE_1__["default"].createOutlet(state.outlet);
 
             case 4:
               response = _context2.sent;
               commit("CLEAR_FORM");
               dispatch("getOutlets"); // send notification success
-
-              notification = {
-                type: "success",
-                message: "Outlet has been successfully added."
-              }; // dispatch("notification/add", notification, { root: true });
+              // const notification = {
+              //     type: "success",
+              //     message: "Outlet has been successfully added.",
+              // };
+              // dispatch("notification/add", notification, { root: true });
               // await dispatch("getOutlets");
               // dispatch("getOutlets").then(() => {
               //     response.data;
               // });
 
-              _context2.next = 18;
+              _context2.next = 17;
               break;
 
-            case 10:
-              _context2.prev = 10;
+            case 9:
+              _context2.prev = 9;
               _context2.t0 = _context2["catch"](1);
               console.group("error for post outlets data");
               console.log(_context2.t0);
@@ -3555,12 +3693,12 @@ var actions = {
 
               throw _context2.t0;
 
-            case 18:
+            case 17:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[1, 10]]);
+      }, _callee2, null, [[1, 9]]);
     }))();
   },
   editOutlet: function editOutlet(_ref3, id) {
@@ -3573,7 +3711,7 @@ var actions = {
               commit = _ref3.commit;
               _context3.prev = 1;
               _context3.next = 4;
-              return _services_OutletService__WEBPACK_IMPORTED_MODULE_2__["default"].getOutlet(id);
+              return _services_OutletService__WEBPACK_IMPORTED_MODULE_1__["default"].getOutlet(id);
 
             case 4:
               response = _context3.sent;
@@ -3612,7 +3750,7 @@ var actions = {
               commit = _ref4.commit, state = _ref4.state;
               _context4.prev = 1;
               _context4.next = 4;
-              return _services_OutletService__WEBPACK_IMPORTED_MODULE_2__["default"].updateOutlet(id, state.outlet);
+              return _services_OutletService__WEBPACK_IMPORTED_MODULE_1__["default"].updateOutlet(id, state.outlet);
 
             case 4:
               response = _context4.sent;
@@ -3647,7 +3785,7 @@ var actions = {
               dispatch = _ref5.dispatch;
               _context5.prev = 1;
               _context5.next = 4;
-              return _services_OutletService__WEBPACK_IMPORTED_MODULE_2__["default"].deleteOutlet(id);
+              return _services_OutletService__WEBPACK_IMPORTED_MODULE_1__["default"].deleteOutlet(id);
 
             case 4:
               response = _context5.sent;
@@ -51770,17 +51908,25 @@ var render = function () {
                   1
                 ),
                 _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
-                _vm._m(3),
-                _vm._v(" "),
-                _vm._m(4),
-                _vm._v(" "),
-                _vm._m(5),
-                _vm._v(" "),
-                _vm._m(6),
-                _vm._v(" "),
-                _vm._m(7),
+                _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { to: { name: "CourierData" } },
+                      },
+                      [
+                        _c("i", { staticClass: "nav-icon fas fa-users" }),
+                        _vm._v(" "),
+                        _c("p", [_vm._v("Courier")]),
+                      ]
+                    ),
+                  ],
+                  1
+                ),
                 _vm._v(" "),
                 _c("li", { staticClass: "nav-item" }, [
                   _c(
@@ -51840,519 +51986,6 @@ var staticRenderFns = [
       _c("div", { staticClass: "info" }, [
         _c("a", { staticClass: "d-block", attrs: { href: "#" } }, [
           _vm._v("Alexander Pierce"),
-        ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c(
-        "a",
-        { staticClass: "nav-link", attrs: { href: "pages/widgets.html" } },
-        [
-          _c("i", { staticClass: "nav-icon fas fa-th" }),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v("\n                Widgets\n                "),
-            _c("span", { staticClass: "right badge badge-danger" }, [
-              _vm._v("New"),
-            ]),
-          ]),
-        ]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-        _c("i", { staticClass: "nav-icon fas fa-copy" }),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v("\n                Layout Options\n                "),
-          _c("i", { staticClass: "fas fa-angle-left right" }),
-          _vm._v(" "),
-          _c("span", { staticClass: "badge badge-info right" }, [_vm._v("6")]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("ul", { staticClass: "nav nav-treeview" }, [
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/layout/top-nav.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Top Navigation")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/layout/top-nav-sidebar.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Top Navigation + Sidebar")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/layout/boxed.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Boxed")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/layout/fixed-sidebar.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Fixed Sidebar")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/layout/fixed-sidebar-custom.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [
-                _vm._v("Fixed Sidebar "),
-                _c("small", [_vm._v("+ Custom Area")]),
-              ]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/layout/fixed-topnav.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Fixed Navbar")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/layout/fixed-footer.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Fixed Footer")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/layout/collapsed-sidebar.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Collapsed Sidebar")]),
-            ]
-          ),
-        ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-        _c("i", { staticClass: "nav-icon fas fa-chart-pie" }),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v("\n                Charts\n                "),
-          _c("i", { staticClass: "right fas fa-angle-left" }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("ul", { staticClass: "nav nav-treeview" }, [
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/charts/chartjs.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("ChartJS")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/charts/flot.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Flot")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/charts/inline.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Inline")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/charts/uplot.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("uPlot")]),
-            ]
-          ),
-        ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-        _c("i", { staticClass: "nav-icon fas fa-tree" }),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v("\n                UI Elements\n                "),
-          _c("i", { staticClass: "fas fa-angle-left right" }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("ul", { staticClass: "nav nav-treeview" }, [
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/UI/general.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("General")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            { staticClass: "nav-link", attrs: { href: "pages/UI/icons.html" } },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Icons")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/UI/buttons.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Buttons")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/UI/sliders.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Sliders")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/UI/modals.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Modals & Alerts")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/UI/navbar.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Navbar & Tabs")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/UI/timeline.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Timeline")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/UI/ribbons.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Ribbons")]),
-            ]
-          ),
-        ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-        _c("i", { staticClass: "nav-icon fas fa-edit" }),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v("\n                Forms\n                "),
-          _c("i", { staticClass: "fas fa-angle-left right" }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("ul", { staticClass: "nav nav-treeview" }, [
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/forms/general.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("General Elements")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/forms/advanced.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Advanced Elements")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/forms/editors.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Editors")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/forms/validation.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Validation")]),
-            ]
-          ),
-        ]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-        _c("i", { staticClass: "nav-icon fas fa-table" }),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v("\n                Tables\n                "),
-          _c("i", { staticClass: "fas fa-angle-left right" }),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("ul", { staticClass: "nav nav-treeview" }, [
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/tables/simple.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("Simple Tables")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/tables/data.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("DataTables")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: { href: "pages/tables/jsgrid.html" },
-            },
-            [
-              _c("i", { staticClass: "far fa-circle nav-icon" }),
-              _vm._v(" "),
-              _c("p", [_vm._v("jsGrid")]),
-            ]
-          ),
         ]),
       ]),
     ])
@@ -69160,7 +68793,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
 /******/ 			if (chunkId === "Home") return "js/Home.js";
-/******/ 			if ({"Login":1,"Error404":1,"IndexOutlet":1,"DataOutlet":1,"AddOutlet":1,"EditOutlet":1,"IndexCourier":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"Login":1,"Error404":1,"IndexOutlet":1,"DataOutlet":1,"AddOutlet":1,"EditOutlet":1,"IndexCourier":1,"DataCourier":1,"AddCourier":1,"EditCourier":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

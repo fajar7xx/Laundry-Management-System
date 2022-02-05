@@ -3,6 +3,11 @@ import router from "./router";
 import store from "./store";
 import App from "./App";
 
+// helpers
+// ketikha membuat helper dan plugin
+// ref https://vuejs.org/v2/guide/plugins.html
+import "./helpers/GetImageHelper";
+
 // import layout for specific needed
 import Default from "./layouts/Default.vue";
 import Blank from "./layouts/Blank.vue";

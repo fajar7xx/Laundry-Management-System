@@ -1,4 +1,4 @@
-import API from "../../utils/api";
+// import API from "../../utils/api";
 import OutletService from "../../services/OutletService";
 
 const state = {
@@ -52,9 +52,10 @@ const actions = {
     async getOutlets({ commit, state }, payload) {
         let search = typeof payload != "undefined" ? payload : "";
         try {
-            const response = await API.get(
-                `/outlets?page=${state.page}&q=${search}`
-            );
+            // const response = await API.get(
+            //     `/outlets?page=${state.page}&q=${search}`
+            // );
+            const response = await OutletService.getOutlets(state.page, search);
             // console.group("outlets data");
             // console.log("response data: ", response.data);
             // console.groupEnd();
@@ -68,15 +69,16 @@ const actions = {
     // tambah outlet
     async submitOutlet({ dispatch, commit, state }) {
         try {
-            const response = await API.post("/outlets", state.outlet);
+            // const response = await API.post("/outlets", state.outlet);
+            const response = await OutletService.createOutlet(state.outlet);
             commit("CLEAR_FORM");
             dispatch("getOutlets");
 
             // send notification success
-            const notification = {
-                type: "success",
-                message: "Outlet has been successfully added.",
-            };
+            // const notification = {
+            //     type: "success",
+            //     message: "Outlet has been successfully added.",
+            // };
             // dispatch("notification/add", notification, { root: true });
 
             // await dispatch("getOutlets");

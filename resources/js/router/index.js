@@ -21,6 +21,12 @@ const EDIT_OUTLET = () =>
 
 const INDEX_COURIER = () =>
     import(/* webpackChunkName: "IndexCourier"*/ "../views/courier/Index");
+const DATA_COURIER = () =>
+    import(/*webpackChunkName: "DataCourier"*/ "../views/courier/Data");
+const ADD_COURIER = () =>
+    import(/* webpackChunkName: "AddCourier"*/ "../views/courier/Add");
+const EDIT_COURIER = () =>
+    import(/* webpackChunkName: "EditCourier"*/ "../views/courier/Edit");
 
 Vue.use(VueRouter);
 
@@ -81,12 +87,37 @@ const routes = [
         ],
     },
     {
-        path: "/courier",
+        path: "/couriers",
         component: INDEX_COURIER,
         meta: {
             requiresAuth: true,
         },
-        children: [],
+        children: [
+            {
+                path: "",
+                name: "CourierData",
+                component: DATA_COURIER,
+                meta: {
+                    title: "Manage Courier",
+                },
+            },
+            {
+                path: "add",
+                name: "CourierAdd",
+                component: ADD_COURIER,
+                meta: {
+                    title: "Add New Courier",
+                },
+            },
+            {
+                path: "edit/:id",
+                name: "CourierEdit",
+                component: EDIT_COURIER,
+                meta: {
+                    title: "Edit Courier",
+                },
+            },
+        ],
     },
     {
         path: "*s",

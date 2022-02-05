@@ -7,6 +7,9 @@
     "/js/DataOutlet.js": "/js/DataOutlet.js",
     "/js/AddOutlet.js": "/js/AddOutlet.js",
     "/js/EditOutlet.js": "/js/EditOutlet.js",
-    "/css/app.css": "/css/app.css",
-    "/js/IndexCourier.js": "/js/IndexCourier.js"
+    "/js/IndexCourier.js": "/js/IndexCourier.js",
+    "/js/DataCourier.js": "/js/DataCourier.js",
+    "/js/AddCourier.js": "/js/AddCourier.js",
+    "/js/EditCourier.js": "/js/EditCourier.js",
+    "/css/app.css": "/css/app.css"
 }
