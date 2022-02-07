@@ -20,7 +20,9 @@ const CourierService = {
     },
 
     updateCourier(id, payload) {
-        return API.put(`/couriers/${id}`, payload, HEADERS);
+        // return API.put(`/couriers/${id}`, payload, HEADERS);
+        // pakai post untuk handle updata formdata
+        return API.post(`/couriers/${id}`, payload, HEADERS);
     },
 
     deleteCourier(id) {

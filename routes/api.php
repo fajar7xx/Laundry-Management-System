@@ -23,7 +23,7 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::group([
     'middleware' => 'auth:sanctum',
-    'as' => 'api.',
+    'as'         => 'api.',
 ], function () {
     Route::get('logout', [AuthController::class, 'logout']);
 
@@ -32,5 +32,13 @@ Route::group([
 
     Route::get('/user', function (Request $request) {
         return $request->user();
+    });
+
+    Route::group([
+        'as'        => 'options.',
+        'prefix'    => 'options',
+        'namespace' => 'Options'
+    ], function () {
+        Route::get('outlets', OutletController::class);
     });
 });

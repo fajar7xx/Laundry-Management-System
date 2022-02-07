@@ -79,7 +79,7 @@ const actions = {
             throw error;
         }
     },
-    async getCourier({ commit }, id) {
+    async getCourier(id) {
         try {
             const response = await CourierService.getCourier(id);
             return response.data.data;
@@ -97,6 +97,7 @@ const actions = {
                 state.id,
                 payload
             );
+            return response.data;
         } catch (error) {
             console.group("error for update courier");
             console.log(error);

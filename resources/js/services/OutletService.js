@@ -20,6 +20,9 @@ const OutletService = {
     deleteOutlet(id) {
         return API.delete(`outlets/${id}`);
     },
+    getOutletOptions() {
+        return API.get(`/options/outlets`);
+    },
 };
 
 export default OutletService;

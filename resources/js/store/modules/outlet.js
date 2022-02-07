@@ -3,7 +3,7 @@ import OutletService from "../../services/OutletService";
 
 const state = {
     outlets: [], //menampung data outlet yang didapatkan dari database
-
+    outletOptions: [],
     // untuk menampung value dari form
     // state ini akan digunakan pada form add
     outlet: {
@@ -20,6 +20,9 @@ const mutations = {
     // memasukann data ke state outlets
     ASSIGN_DATA(state, payload) {
         state.outlets = payload;
+    },
+    ASSIGN_OPTION(state, payload) {
+        state.outletOptions = payload;
     },
     // mengubah data state page
     SET_PAGE(state, payload) {
@@ -64,6 +67,7 @@ const actions = {
             console.group("error for get outlets data");
             console.log(error);
             console.groupEnd();
+            throw error;
         }
     },
     // tambah outlet
@@ -133,6 +137,21 @@ const actions = {
             dispatch("getOutlets");
         } catch (error) {
             console.group("error for remove outlet");
+            console.log(error);
+            console.log(error.response);
+            console.groupEnd();
+            throw error;
+        }
+    },
+    async getOutletOptions({ commit }) {
+        try {
+            const response = await OutletService.getOutletOptions();
+            // console.group("outlet options");
+            // console.log(response.data);
+            // console.groupEnd();
+            commit("ASSIGN_OPTION", response.data);
+        } catch (error) {
+            console.group("error for get outlet options");
             console.log(error);
             console.log(error.response);
             console.groupEnd();

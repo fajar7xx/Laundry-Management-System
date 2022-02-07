@@ -2847,7 +2847,9 @@ var CourierService = {
     return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].post("/couriers", payload, HEADERS);
   },
   updateCourier: function updateCourier(id, payload) {
-    return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].put("/couriers/".concat(id), payload, HEADERS);
+    // return API.put(`/couriers/${id}`, payload, HEADERS);
+    // pakai post untuk handle updata formdata
+    return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].post("/couriers/".concat(id), payload, HEADERS);
   },
   deleteCourier: function deleteCourier(id) {
     return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]("/couriers/".concat(id));
@@ -2885,6 +2887,9 @@ var OutletService = {
   },
   deleteOutlet: function deleteOutlet(id) {
     return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]("outlets/".concat(id));
+  },
+  getOutletOptions: function getOutletOptions() {
+    return _utils_api__WEBPACK_IMPORTED_MODULE_0__["default"].get("/options/outlets");
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OutletService);
@@ -3372,58 +3377,56 @@ var actions = {
       }, _callee2, null, [[1, 8]]);
     }))();
   },
-  getCourier: function getCourier(_ref3, id) {
+  getCourier: function getCourier(id) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-      var commit, response;
+      var response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              commit = _ref3.commit;
-              _context3.prev = 1;
-              _context3.next = 4;
+              _context3.prev = 0;
+              _context3.next = 3;
               return _services_CourierService__WEBPACK_IMPORTED_MODULE_1__["default"].getCourier(id);
 
-            case 4:
+            case 3:
               response = _context3.sent;
               return _context3.abrupt("return", response.data.data);
 
-            case 8:
-              _context3.prev = 8;
-              _context3.t0 = _context3["catch"](1);
+            case 7:
+              _context3.prev = 7;
+              _context3.t0 = _context3["catch"](0);
               console.group("error for get courier");
               console.log(_context3.t0);
               console.log(_context3.t0.response);
               console.groupEnd();
               throw _context3.t0;
 
-            case 15:
+            case 14:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3, null, [[1, 8]]);
+      }, _callee3, null, [[0, 7]]);
     }))();
   },
-  updateCourier: function updateCourier(_ref4, payload) {
+  updateCourier: function updateCourier(_ref3, payload) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
       var state, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              state = _ref4.state;
+              state = _ref3.state;
               _context4.prev = 1;
               _context4.next = 4;
               return _services_CourierService__WEBPACK_IMPORTED_MODULE_1__["default"].updateCourier(state.id, payload);
 
             case 4:
               response = _context4.sent;
-              _context4.next = 14;
-              break;
+              return _context4.abrupt("return", response.data);
 
-            case 7:
-              _context4.prev = 7;
+            case 8:
+              _context4.prev = 8;
               _context4.t0 = _context4["catch"](1);
               console.group("error for update courier");
               console.log(_context4.t0);
@@ -3431,22 +3434,22 @@ var actions = {
               console.groupEnd();
               throw _context4.t0;
 
-            case 14:
+            case 15:
             case "end":
               return _context4.stop();
           }
         }
-      }, _callee4, null, [[1, 7]]);
+      }, _callee4, null, [[1, 8]]);
     }))();
   },
-  removeCourier: function removeCourier(_ref5, id) {
+  removeCourier: function removeCourier(_ref4, id) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
       var dispatch, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
-              dispatch = _ref5.dispatch;
+              dispatch = _ref4.dispatch;
               _context5.prev = 1;
               _context5.next = 4;
               return _services_CourierService__WEBPACK_IMPORTED_MODULE_1__["default"].deleteCourier(id);
@@ -3565,6 +3568,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var state = {
   outlets: [],
   //menampung data outlet yang didapatkan dari database
+  outletOptions: [],
   // untuk menampung value dari form
   // state ini akan digunakan pada form add
   outlet: {
@@ -3581,6 +3585,9 @@ var mutations = {
   // memasukann data ke state outlets
   ASSIGN_DATA: function ASSIGN_DATA(state, payload) {
     state.outlets = payload;
+  },
+  ASSIGN_OPTION: function ASSIGN_OPTION(state, payload) {
+    state.outletOptions = payload;
   },
   // mengubah data state page
   SET_PAGE: function SET_PAGE(state, payload) {
@@ -3628,7 +3635,7 @@ var actions = {
               // console.log("response data: ", response.data);
               // console.groupEnd();
               commit("ASSIGN_DATA", response.data);
-              _context.next = 14;
+              _context.next = 15;
               break;
 
             case 9:
@@ -3637,8 +3644,9 @@ var actions = {
               console.group("error for get outlets data");
               console.log(_context.t0);
               console.groupEnd();
+              throw _context.t0;
 
-            case 14:
+            case 15:
             case "end":
               return _context.stop();
           }
@@ -3808,6 +3816,44 @@ var actions = {
           }
         }
       }, _callee5, null, [[1, 8]]);
+    }))();
+  },
+  getOutletOptions: function getOutletOptions(_ref6) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
+      var commit, response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              commit = _ref6.commit;
+              _context6.prev = 1;
+              _context6.next = 4;
+              return _services_OutletService__WEBPACK_IMPORTED_MODULE_1__["default"].getOutletOptions();
+
+            case 4:
+              response = _context6.sent;
+              // console.group("outlet options");
+              // console.log(response.data);
+              // console.groupEnd();
+              commit("ASSIGN_OPTION", response.data);
+              _context6.next = 15;
+              break;
+
+            case 8:
+              _context6.prev = 8;
+              _context6.t0 = _context6["catch"](1);
+              console.group("error for get outlet options");
+              console.log(_context6.t0);
+              console.log(_context6.t0.response);
+              console.groupEnd();
+              throw _context6.t0;
+
+            case 15:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6, null, [[1, 8]]);
     }))();
   }
 };

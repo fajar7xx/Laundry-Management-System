@@ -29,7 +29,7 @@ class UserUpdateFormRequest extends FormRequest
             // 'email'     => ['required', 'email', 'unique:users,email'],
             'password'  => ['string', Password::min(8)->letters()->numbers()],
             'outlet_id' => ['required', 'exists:outlets,id'],
-            'photo'     => ['image', 'max:512']
+            'photo'     => ['nullable', 'image', 'max:512']
         ];
     }
 }
