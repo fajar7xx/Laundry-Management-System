@@ -1,11 +1,16 @@
 <template>
   <div>
-    <b-alert show variant="danger" dismissible v-if="errors != ''"
-      >Warning the given data was invalid</b-alert
+    <b-alert
+      show
+      variant="danger"
+      dismissible
+      v-if="errors != '' || $v.$anyError"
+      >Warning the given data was invalid. Please fill out the required
+      filed</b-alert
     >
     <div class="form-group">
       <label for="name">Nama Lengkap</label>
-      <input
+      <!-- <input
         type="text"
         name="name"
         id="name"
@@ -13,10 +18,27 @@
         :class="{ 'is-invalid': errors.name }"
         v-model="courier.name"
         :readonly="$route.name === 'CourierEdit'"
+      /> -->
+      <input
+        type="text"
+        name="name"
+        id="name"
+        class="form-control"
+        v-model="courier.name"
+        :class="{ 'is-invalid': $v.courier.name.$error }"
+        @blur="$v.courier.name.$touch()"
+        :readonly="$route.name === 'CourierEdit'"
       />
-      <span class="error invalid-feedback" v-if="errors.name">{{
+      <!-- <span class="error invalid-feedback" v-if="errors.name">{{
         errors.name[0]
-      }}</span>
+      }}</span> -->
+      <span class="error invalid-feedback" v-if="$v.courier.name.$error">
+        <span v-if="!$v.courier.name.required">Field is required.</span>
+        <span v-if="!$v.courier.name.minLength">
+          Field must have at least
+          {{ $v.courier.name.$params.minLength.min }} characters.
+        </span>
+      </span>
     </div>
     <div class="form-group">
       <label for="email">Email</label>
@@ -25,26 +47,50 @@
         name="email"
         id="email"
         class="form-control"
-        :class="{ 'is-invalid': errors.email }"
+        :class="{ 'is-invalid': $v.courier.email.$error || errors.email }"
         v-model="courier.email"
+        @blur="$v.courier.email.$touch()"
       />
-      <span class="error invalid-feedback" v-if="errors.email">{{
-        errors.email[0]
-      }}</span>
+      <span
+        class="error invalid-feedback"
+        v-if="$v.courier.email.$error || errors.email"
+      >
+        <span v-if="!$v.courier.email.email">Field must valid email.</span>
+        <span v-if="!$v.courier.email.required">Field is required.</span>
+        <span v-if="errors.email">{{ errors.email[0] }}</span>
+      </span>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        class="form-control"
-        :class="{ 'is-invalid': errors.password }"
-        v-model="courier.password"
-      />
-      <span class="error invalid-feedback" v-if="errors.password">{{
-        errors.password[0]
-      }}</span>
+      <div class="input-group mb-3">
+        <input
+          :type="pwd.type"
+          class="form-control"
+          id="password"
+          name="password"
+          v-model="courier.password"
+          :class="{
+            'is-invalid': $v.courier.password.$error || errors.password,
+          }"
+          @blur="$v.courier.password.$touch()"
+        />
+        <span class="input-group-append">
+          <span type="button" class="input-group-text" @click="togglePassword">
+            {{ pwd.btnText }}
+          </span>
+        </span>
+        <div
+          class="error invalid-feedback"
+          v-if="$v.courier.password.$error || errors.password"
+        >
+          <span v-if="!$v.courier.password.required">Field is required</span>
+          <span v-if="!$v.courier.password.minLength"
+            >Field must have at least
+            {{ $v.courier.password.$params.minLength.min }} characters.</span
+          >
+          <span v-if="errors.password"> {{ errors.password }}</span>
+        </div>
+      </div>
     </div>
     <div class="form-group">
       <label for="outlet">Outlet</label>
@@ -52,8 +98,9 @@
         name="outlet"
         id="outlet"
         class="form-control"
-        :class="{ 'is-invalid': errors.outlet_id }"
+        :class="{ 'is-invalid': $v.courier.outlet_id.$error }"
         v-model="courier.outlet_id"
+        @blur="$v.courier.outlet_id.$touch()"
       >
         <option value="">Silahkan Pilih Outlet</option>
         <option
@@ -64,25 +111,33 @@
           {{ row.name }}
         </option>
       </select>
-      <span class="error invalid-feedback" v-if="errors.outlet_id">{{
-        errors.outlet_id[0]
-      }}</span>
+      <span class="error invalid-feedback" v-if="!$v.courier.outlet_id.required"
+        >Filed is required.</span
+      >
     </div>
     <div class="form-group">
+      <b-img v-if="imgPreview" :src="imgPreview" v-bind="imgProps"></b-img>
       <div class="custom-file">
         <input
           type="file"
           class="custom-file-input"
           id="photo"
           name="photo"
-          :class="{ 'is-invalid': errors.photo }"
+          :class="{ 'is-invalid': errors.photo || $v.courier.photo.$error }"
           accept="image/*"
           @change="uploadImage($event)"
+          @blur="$v.courier.photo.$touch()"
         />
         <label class="custom-file-label" for="photo">Choose file</label>
-        <span class="error invalid-feedback" v-if="errors.photo">{{
-          errors.photo[0]
-        }}</span>
+        <div
+          class="error invalid-feedback"
+          v-if="errors.photo || $v.courier.photo.$error"
+        >
+          <span v-if="errors.photo">{{ errors.photo[0] }}</span>
+          <span v-if="!$v.courier.photo.imageRule"
+            >Image allowed Jpg, Jpeg, png extension</span
+          >
+        </div>
       </div>
     </div>
   </div>
@@ -90,6 +145,29 @@
 
 <script>
 import { mapActions, mapMutations, mapState } from "vuex";
+// import validation from vuelidate
+// ref terkait vuelidate https://vuelidate-next.netlify.app/custom_validators.html
+// https://stackoverflow.com/questions/66688532/password-validate-with-vuelidate-in-vuejs
+import { required, minLength, email, helpers } from "vuelidate/lib/validators";
+// image validation using vuelidate
+// const imageRegex = "([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)";
+// const imageRule = helpers.regex("image", imageRegex);
+const imageRule = helpers.regex(
+  "imageRule",
+  /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i
+);
+const maxImageFileSize = (value) => (value.size / 1024 / 1024).toFixed(2) > 1; //max 1MB
+const passwordUniqeAlphaNum = (value) => {
+  const containsUppercase = /[A-Z]/.test(value);
+  const containsLowercase = /[a-z]/.test(value);
+  const containsNumber = /[0-9]/.test(value);
+  const containsSpecial = /[#?!@$%^&*-]/.test(value);
+  return (
+    containsUppercase && containsLowercase && containsNumber && containsSpecial
+  );
+};
+const pattern = "/^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/";
+const passUnique = (value) => value.match(pattern);
 export default {
   data() {
     return {
@@ -100,7 +178,45 @@ export default {
         outlet_id: "",
         photo: "",
       },
+      imgPreview: "https://plchldr.co/i/80x50?text=preview&fc=000",
+      //   imgPreview: "",
+      imgProps: {
+        center: false,
+        fluid: true,
+        thumbnail: true,
+        fluidGrow: false,
+        blank: false,
+        blankColor: "#323232",
+        width: 100,
+        height: 100,
+        class: "my-2",
+      },
+      pwd: {
+        type: "password",
+        btnText: "Show",
+      },
     };
+  },
+  //   validasi based on courier data
+  validations: {
+    courier: {
+      name: {
+        required,
+        minLength: minLength(6),
+      },
+      email: {
+        required,
+        email,
+      },
+      password: {
+        required,
+        minLength: minLength(8),
+      },
+      outlet_id: {
+        required,
+      },
+      photo: { imageRule, maxImageFileSize },
+    },
   },
   created() {
     this.getOutletOptions();
@@ -129,9 +245,16 @@ export default {
     // ambil file ketika file diupload di form input file
     uploadImage(event) {
       this.courier.photo = event.target.files[0];
+      this.imgPreview = URL.createObjectURL(event.target.files[0]);
+      console.log(this.imgPreview);
     },
 
     submit() {
+      // set all fields to touched
+      this.$v.$touch(); //untuk memulai melakukan validasi pada field
+      // stop here if form is invalid
+      //   if (this.$v.$invalid) return;
+
       // buat dlu formdata untuk menampung nilai pada field input termasuk input file
       const courierForm = new FormData();
       courierForm.append("name", this.courier.name);
@@ -192,6 +315,16 @@ export default {
         outlet_id: "",
         photo: "",
       };
+    },
+
+    togglePassword() {
+      if (this.pwd.type === "password") {
+        this.pwd.type = "text";
+        this.pwd.btnText = "Hide";
+      } else {
+        this.pwd.type = "password";
+        this.pwd.btnText = "Show";
+      }
     },
   },
 };

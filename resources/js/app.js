@@ -23,6 +23,9 @@ import VueSweetalert2 from "vue-sweetalert2";
 // If you don't need the styles, do not connect
 import "sweetalert2/dist/sweetalert2.min.css";
 
+// validation package for vue
+import Vuelidate from "vuelidate";
+
 // layout initialize in component global
 Vue.component("default-layout", Default);
 Vue.component("blank-layout", Blank);
@@ -31,6 +34,8 @@ Vue.component("blank-layout", Blank);
 Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
+
+Vue.use(Vuelidate);
 
 const swalOptions = {
     confirmButtonColor: "#3085d6",

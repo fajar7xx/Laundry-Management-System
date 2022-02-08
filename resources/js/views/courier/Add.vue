@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapActions, mapState, mapMutations } from "vuex";
+// import { mapActions, mapState, mapMutations } from "vuex";
 import CourierForm from "./components/CourierForm";
 export default {
   components: { CourierForm },

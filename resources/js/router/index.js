@@ -135,8 +135,11 @@ const router = new VueRouter({
     routes,
 });
 
+// untuk buat title pada vue js
+//stackoverflow.com/questions/49685780/vue-js-get-route-name-in-app-vue
+
 // navigation guard
-router.beforeEach((to, from, next) => {
+https: router.beforeEach((to, from, next) => {
     // bersihkan semua error yang ada
     store.commit("CLEAR_ERRORS");
     if (to.matched.some((record) => record.meta.requiresAuth)) {
