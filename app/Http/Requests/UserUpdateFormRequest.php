@@ -27,7 +27,7 @@ class UserUpdateFormRequest extends FormRequest
         return [
             'name'      => ['required', 'string', 'min:5'],
             // 'email'     => ['required', 'email', 'unique:users,email'],
-            'password'  => ['string', Password::min(8)->letters()->numbers()],
+            'password'  => ['nullable', 'string', Password::min(8)->letters()->numbers()],
             'outlet_id' => ['required', 'exists:outlets,id'],
             'photo'     => ['nullable', 'image', 'max:512']
         ];

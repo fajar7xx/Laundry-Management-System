@@ -3255,6 +3255,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _services_CourierService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/CourierService */ "./resources/js/services/CourierService.js");
+function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -3384,46 +3386,49 @@ var actions = {
       }, _callee2, null, [[1, 8]]);
     }))();
   },
-  getCourier: function getCourier(id) {
+  // payload letakkan pada paremeter ke2
+  getCourier: function getCourier(_ref3, id) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
       var response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              _context3.prev = 0;
-              _context3.next = 3;
+              _objectDestructuringEmpty(_ref3);
+
+              _context3.prev = 1;
+              _context3.next = 4;
               return _services_CourierService__WEBPACK_IMPORTED_MODULE_1__["default"].getCourier(id);
 
-            case 3:
+            case 4:
               response = _context3.sent;
-              return _context3.abrupt("return", response.data.data);
+              return _context3.abrupt("return", response.data);
 
-            case 7:
-              _context3.prev = 7;
-              _context3.t0 = _context3["catch"](0);
+            case 8:
+              _context3.prev = 8;
+              _context3.t0 = _context3["catch"](1);
               console.group("error for get courier");
               console.log(_context3.t0);
               console.log(_context3.t0.response);
               console.groupEnd();
               throw _context3.t0;
 
-            case 14:
+            case 15:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3, null, [[0, 7]]);
+      }, _callee3, null, [[1, 8]]);
     }))();
   },
-  updateCourier: function updateCourier(_ref3, payload) {
+  updateCourier: function updateCourier(_ref4, payload) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
       var state, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              state = _ref3.state;
+              state = _ref4.state;
               _context4.prev = 1;
               _context4.next = 4;
               return _services_CourierService__WEBPACK_IMPORTED_MODULE_1__["default"].updateCourier(state.id, payload);
@@ -3449,14 +3454,14 @@ var actions = {
       }, _callee4, null, [[1, 8]]);
     }))();
   },
-  removeCourier: function removeCourier(_ref4, id) {
+  removeCourier: function removeCourier(_ref5, id) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
       var dispatch, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
-              dispatch = _ref4.dispatch;
+              dispatch = _ref5.dispatch;
               _context5.prev = 1;
               _context5.next = 4;
               return _services_CourierService__WEBPACK_IMPORTED_MODULE_1__["default"].deleteCourier(id);

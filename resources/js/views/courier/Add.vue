@@ -31,7 +31,7 @@ export default {
   components: { CourierForm },
   methods: {
     submitForm() {
-      //   console.log("submit form dlu");
+      console.log("submit form dlu");
       //mengirimkan submit pada ref formCourier dimana itu adalah komponen dari courier form
       // jadi membuat si komponen ini seolah2 mempunya submit
       // referensi https://v2.vuejs.org/v2/guide/components-edge-cases.html#Accessing-Child-Component-Instances-amp-Child-Elements

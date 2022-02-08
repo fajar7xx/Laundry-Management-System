@@ -79,10 +79,14 @@ const actions = {
             throw error;
         }
     },
-    async getCourier(id) {
+    // payload letakkan pada paremeter ke2
+    async getCourier({}, id) {
         try {
+            // console.group("get courier detail");
+            // console.log(id);
+            // console.groupEnd;
             const response = await CourierService.getCourier(id);
-            return response.data.data;
+            return response.data;
         } catch (error) {
             console.group("error for get courier");
             console.log(error);

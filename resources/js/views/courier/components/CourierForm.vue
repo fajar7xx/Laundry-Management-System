@@ -123,20 +123,13 @@
           class="custom-file-input"
           id="photo"
           name="photo"
-          :class="{ 'is-invalid': errors.photo || $v.courier.photo.$error }"
+          :class="{ 'is-invalid': errors.photo }"
           accept="image/*"
           @change="uploadImage($event)"
-          @blur="$v.courier.photo.$touch()"
         />
         <label class="custom-file-label" for="photo">Choose file</label>
-        <div
-          class="error invalid-feedback"
-          v-if="errors.photo || $v.courier.photo.$error"
-        >
+        <div class="error invalid-feedback" v-if="errors.photo">
           <span v-if="errors.photo">{{ errors.photo[0] }}</span>
-          <span v-if="!$v.courier.photo.imageRule"
-            >Image allowed Jpg, Jpeg, png extension</span
-          >
         </div>
       </div>
     </div>
@@ -148,26 +141,7 @@ import { mapActions, mapMutations, mapState } from "vuex";
 // import validation from vuelidate
 // ref terkait vuelidate https://vuelidate-next.netlify.app/custom_validators.html
 // https://stackoverflow.com/questions/66688532/password-validate-with-vuelidate-in-vuejs
-import { required, minLength, email, helpers } from "vuelidate/lib/validators";
-// image validation using vuelidate
-// const imageRegex = "([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)";
-// const imageRule = helpers.regex("image", imageRegex);
-const imageRule = helpers.regex(
-  "imageRule",
-  /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i
-);
-const maxImageFileSize = (value) => (value.size / 1024 / 1024).toFixed(2) > 1; //max 1MB
-const passwordUniqeAlphaNum = (value) => {
-  const containsUppercase = /[A-Z]/.test(value);
-  const containsLowercase = /[a-z]/.test(value);
-  const containsNumber = /[0-9]/.test(value);
-  const containsSpecial = /[#?!@$%^&*-]/.test(value);
-  return (
-    containsUppercase && containsLowercase && containsNumber && containsSpecial
-  );
-};
-const pattern = "/^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/";
-const passUnique = (value) => value.match(pattern);
+import { required, minLength, email } from "vuelidate/lib/validators";
 export default {
   data() {
     return {
@@ -198,31 +172,95 @@ export default {
     };
   },
   //   validasi based on courier data
-  validations: {
-    courier: {
-      name: {
-        required,
-        minLength: minLength(6),
-      },
-      email: {
-        required,
-        email,
-      },
-      password: {
-        required,
-        minLength: minLength(8),
-      },
-      outlet_id: {
-        required,
-      },
-      photo: { imageRule, maxImageFileSize },
-    },
+  //   validations: {
+  //     courier: {
+  //       name: {
+  //         required,
+  //         minLength: minLength(6),
+  //       },
+  //       email: {
+  //         required,
+  //         email,
+  //       },
+  //       password: {
+  //         required: requiredIf(() => {
+  //           console.log(`required if ${this.routeName}`);
+  //           return this.routeName == "CourierAdd";
+  //         }),
+  //         minLength: minLength(8),
+  //       },
+  //       outlet_id: {
+  //         required,
+  //       },
+  //       photo: { imageRule, maxImageFileSize },
+  //     },
+  //   },
+
+  //   dynamic validation karena komponen ini dipakai lebih satu component/route
+  //   https://vuelidate.js.org/#sub-dynamic-validation-schema
+  validations() {
+    if (this.routeName === "CourierAdd") {
+      return {
+        courier: {
+          name: {
+            required,
+            minLength: minLength(6),
+          },
+          email: {
+            required,
+            email,
+          },
+          password: {
+            required,
+            minLength: minLength(8),
+          },
+          outlet_id: {
+            required,
+          },
+        },
+      };
+    } else {
+      return {
+        courier: {
+          name: {
+            required,
+            minLength: minLength(6),
+          },
+          email: {
+            required,
+            email,
+          },
+          password: {
+            minLength: minLength(8),
+          },
+          outlet_id: {
+            required,
+          },
+        },
+      };
+    }
   },
   created() {
     this.getOutletOptions();
+
+    //fungsi untuk mengambil data yang akan diedit dijalankan berdasarkan parameter id yang ada di query url
     if (this.routeName === "CourierEdit") {
       console.log("ini halaman edit");
-      //fungsi untuk mengambil data yang akan diedit dijalankan berdasarkan parameter id yang ada di query url
+      this.getCourier(this.$route.params.id)
+        .then((response) => {
+          this.courier = {
+            name: response.data.name,
+            email: response.data.email,
+            password: "",
+            photo: "",
+            outlet_id: response.data.outlet_id,
+          };
+        })
+        .catch((error) => {
+          console.group("error get courier from component");
+          console.log(error);
+          console.groupEnd();
+        });
     }
   },
   destroyed() {
@@ -253,8 +291,9 @@ export default {
       // set all fields to touched
       this.$v.$touch(); //untuk memulai melakukan validasi pada field
       // stop here if form is invalid
-      //   if (this.$v.$invalid) return;
+      if (this.$v.$invalid) return;
 
+      console.log("jalankan form submit berdasarkan routing");
       // buat dlu formdata untuk menampung nilai pada field input termasuk input file
       const courierForm = new FormData();
       courierForm.append("name", this.courier.name);
@@ -285,6 +324,8 @@ export default {
           break;
         case "CourierEdit":
           console.log("this is an example for edit a courier");
+
+          courierForm.append("_method", "PUT");
           this.SET_ID_UPDATE(this.$route.params.id);
           this.updateCourier(courierForm).then(() => {
             this.clearForm();

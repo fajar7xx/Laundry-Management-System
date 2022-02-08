@@ -46,10 +46,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submitForm: function submitForm() {
-      //   console.log("submit form dlu");
-      //mengirimkan submit pada ref formCourier dimana itu adalah komponen dari courier form
+      console.log("submit form dlu"); //mengirimkan submit pada ref formCourier dimana itu adalah komponen dari courier form
       // jadi membuat si komponen ini seolah2 mempunya submit
       // referensi https://v2.vuejs.org/v2/guide/components-edge-cases.html#Accessing-Child-Component-Instances-amp-Child-Elements
+
       this.$refs.formCourier.submit();
     }
   }
@@ -213,41 +213,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
  // import validation from vuelidate
 // ref terkait vuelidate https://vuelidate-next.netlify.app/custom_validators.html
 // https://stackoverflow.com/questions/66688532/password-validate-with-vuelidate-in-vuejs
 
- // image validation using vuelidate
-// const imageRegex = "([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)";
-// const imageRule = helpers.regex("image", imageRegex);
-
-var imageRule = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.helpers.regex("imageRule", /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i);
-
-var maxImageFileSize = function maxImageFileSize(value) {
-  return (value.size / 1024 / 1024).toFixed(2) > 1;
-}; //max 1MB
-
-
-var passwordUniqeAlphaNum = function passwordUniqeAlphaNum(value) {
-  var containsUppercase = /[A-Z]/.test(value);
-  var containsLowercase = /[a-z]/.test(value);
-  var containsNumber = /[0-9]/.test(value);
-  var containsSpecial = /[#?!@$%^&*-]/.test(value);
-  return containsUppercase && containsLowercase && containsNumber && containsSpecial;
-};
-
-var pattern = "/^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/";
-
-var passUnique = function passUnique(value) {
-  return value.match(pattern);
-};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -279,34 +248,93 @@ var passUnique = function passUnique(value) {
     };
   },
   //   validasi based on courier data
-  validations: {
-    courier: {
-      name: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required,
-        minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.minLength)(6)
-      },
-      email: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required,
-        email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.email
-      },
-      password: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required,
-        minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.minLength)(8)
-      },
-      outlet_id: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
-      },
-      photo: {
-        imageRule: imageRule,
-        maxImageFileSize: maxImageFileSize
-      }
+  //   validations: {
+  //     courier: {
+  //       name: {
+  //         required,
+  //         minLength: minLength(6),
+  //       },
+  //       email: {
+  //         required,
+  //         email,
+  //       },
+  //       password: {
+  //         required: requiredIf(() => {
+  //           console.log(`required if ${this.routeName}`);
+  //           return this.routeName == "CourierAdd";
+  //         }),
+  //         minLength: minLength(8),
+  //       },
+  //       outlet_id: {
+  //         required,
+  //       },
+  //       photo: { imageRule, maxImageFileSize },
+  //     },
+  //   },
+  //   dynamic validation karena komponen ini dipakai lebih satu component/route
+  //   https://vuelidate.js.org/#sub-dynamic-validation-schema
+  validations: function validations() {
+    if (this.routeName === "CourierAdd") {
+      return {
+        courier: {
+          name: {
+            required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required,
+            minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.minLength)(6)
+          },
+          email: {
+            required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required,
+            email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.email
+          },
+          password: {
+            required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required,
+            minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.minLength)(8)
+          },
+          outlet_id: {
+            required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+          }
+        }
+      };
+    } else {
+      return {
+        courier: {
+          name: {
+            required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required,
+            minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.minLength)(6)
+          },
+          email: {
+            required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required,
+            email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.email
+          },
+          password: {
+            minLength: (0,vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.minLength)(8)
+          },
+          outlet_id: {
+            required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__.required
+          }
+        }
+      };
     }
   },
   created: function created() {
-    this.getOutletOptions();
+    var _this = this;
+
+    this.getOutletOptions(); //fungsi untuk mengambil data yang akan diedit dijalankan berdasarkan parameter id yang ada di query url
 
     if (this.routeName === "CourierEdit") {
-      console.log("ini halaman edit"); //fungsi untuk mengambil data yang akan diedit dijalankan berdasarkan parameter id yang ada di query url
+      console.log("ini halaman edit");
+      this.getCourier(this.$route.params.id).then(function (response) {
+        _this.courier = {
+          name: response.data.name,
+          email: response.data.email,
+          password: "",
+          photo: "",
+          outlet_id: response.data.outlet_id
+        };
+      })["catch"](function (error) {
+        console.group("error get courier from component");
+        console.log(error);
+        console.groupEnd();
+      });
     }
   },
   destroyed: function destroyed() {
@@ -329,13 +357,14 @@ var passUnique = function passUnique(value) {
       console.log(this.imgPreview);
     },
     submit: function submit() {
-      var _this = this;
+      var _this2 = this;
 
       // set all fields to touched
       this.$v.$touch(); //untuk memulai melakukan validasi pada field
       // stop here if form is invalid
-      //   if (this.$v.$invalid) return;
-      // buat dlu formdata untuk menampung nilai pada field input termasuk input file
+
+      if (this.$v.$invalid) return;
+      console.log("jalankan form submit berdasarkan routing"); // buat dlu formdata untuk menampung nilai pada field input termasuk input file
 
       var courierForm = new FormData();
       courierForm.append("name", this.courier.name);
@@ -349,14 +378,14 @@ var passUnique = function passUnique(value) {
           console.log("this and example for add a courier"); //   kirim data ke vuex action dengan membawa payload
 
           this.submitCourier(courierForm).then(function () {
-            _this.clearForm();
+            _this2.clearForm();
 
-            _this.$router.push({
+            _this2.$router.push({
               name: "CourierData"
             });
 
             setTimeout(function () {
-              _this.$swal({
+              _this2.$swal({
                 toast: true,
                 position: "top-end",
                 showConfirmButton: false,
@@ -371,16 +400,17 @@ var passUnique = function passUnique(value) {
 
         case "CourierEdit":
           console.log("this is an example for edit a courier");
+          courierForm.append("_method", "PUT");
           this.SET_ID_UPDATE(this.$route.params.id);
           this.updateCourier(courierForm).then(function () {
-            _this.clearForm();
+            _this2.clearForm();
 
-            _this.$router.push({
+            _this2.$router.push({
               name: "CourierData"
             });
 
             setTimeout(function () {
-              _this.$swal({
+              _this2.$swal({
                 toast: true,
                 position: "top-end",
                 showConfirmButton: false,
@@ -995,9 +1025,7 @@ var render = function () {
           _c("div", { staticClass: "custom-file" }, [
             _c("input", {
               staticClass: "custom-file-input",
-              class: {
-                "is-invalid": _vm.errors.photo || _vm.$v.courier.photo.$error,
-              },
+              class: { "is-invalid": _vm.errors.photo },
               attrs: {
                 type: "file",
                 id: "photo",
@@ -1008,9 +1036,6 @@ var render = function () {
                 change: function ($event) {
                   return _vm.uploadImage($event)
                 },
-                blur: function ($event) {
-                  return _vm.$v.courier.photo.$touch()
-                },
               },
             }),
             _vm._v(" "),
@@ -1020,16 +1045,10 @@ var render = function () {
               [_vm._v("Choose file")]
             ),
             _vm._v(" "),
-            _vm.errors.photo || _vm.$v.courier.photo.$error
+            _vm.errors.photo
               ? _c("div", { staticClass: "error invalid-feedback" }, [
                   _vm.errors.photo
                     ? _c("span", [_vm._v(_vm._s(_vm.errors.photo[0]))])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  !_vm.$v.courier.photo.imageRule
-                    ? _c("span", [
-                        _vm._v("Image allowed Jpg, Jpeg, png extension"),
-                      ])
                     : _vm._e(),
                 ])
               : _vm._e(),
