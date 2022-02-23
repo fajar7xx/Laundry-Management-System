@@ -4,8 +4,14 @@ tutorial:
     ✔ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-3-management-outlets @done(22-01-31 21:18)
         ✔ https://youtu.be/QdCCTIg5_E0?list=PLqVuTr0mmtloEmc6QB-THjN5OILpS5g5j&t=1035 17:15 @done(22-01-31 21:18)
         ✔ https://youtu.be/QdCCTIg5_E0?list=PLqVuTr0mmtloEmc6QB-THjN5OILpS5g5j&t=1304 21:44 @done(22-01-31 21:18)
-    ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-4-management-couriers
+    ✔ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-4-management-couriers @done(22-02-08 23:20)
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-5-manage-laundry-products
+        ✔ Backend @done(22-02-23 11:14)
+        ☐ Test API
+        ☐ Frontend
+            ☐ router
+            ☐ state/vuex
+            ☐ view/component
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-6-role-user-permissions
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-7-push-notification-expenses
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-8-manage-customers

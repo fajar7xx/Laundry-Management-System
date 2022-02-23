@@ -83,7 +83,7 @@ class UserController extends Controller
     {
         // dd($request->all());
 
-        $password = $request->password ?? \Hash::make($request->password);
+        // $password = $request->password ?? \Hash::make($request->password);
         $fileName = $courier->photo;
 
         if ($request->hasFile('photo')) {
@@ -94,8 +94,11 @@ class UserController extends Controller
             $file->storeAs('public/couriers', $fileName);
         }
 
+        if ($request->password != null || $request->password != '') {
+            $courier->password  = \Hash::make($request->password);
+        }
+
         $courier->name      = $request->name;
-        $courier->password  = $password;
         $courier->photo     = $fileName;
         $courier->outlet_id = $request->outlet_id;
         $courier->save();

@@ -27,8 +27,11 @@ Route::group([
 ], function () {
     Route::get('logout', [AuthController::class, 'logout']);
 
+    Route::post('laundry-type', [App\Http\Controllers\API\LaundryTypeController::class, 'store']);
+
     Route::apiResource('outlets', OutletController::class);
     Route::apiResource('couriers', UserController::class);
+    Route::apiResource('product', ProductController::class);
 
     Route::get('/user', function (Request $request) {
         return $request->user();
@@ -40,5 +43,6 @@ Route::group([
         'namespace' => 'Options'
     ], function () {
         Route::get('outlets', OutletController::class);
+        Route::get('laundry-types', LaundryTypeController::class);
     });
 });
