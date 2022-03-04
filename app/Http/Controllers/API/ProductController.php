@@ -22,7 +22,7 @@ class ProductController extends Controller
         $search = $request->q;
         $wildSearch = "%$search%";
 
-        $query = LaundryPrice::with(['laundyType', 'user']);
+        $query = LaundryPrice::with(['laundryType', 'user']);
         $query->when($search, function ($q) use ($wildSearch) {
             $q->where('name', 'LIKE', $wildSearch);
         });

@@ -28,6 +28,15 @@ const ADD_COURIER = () =>
 const EDIT_COURIER = () =>
     import(/* webpackChunkName: "EditCourier"*/ "../views/courier/Edit");
 
+const INDEX_PRODUCT = () =>
+    import(/* webpackChunkName: "IndexProduct"*/ "../views/products/Index");
+const DATA_PRODUCT = () =>
+    import(/* webpackChunkName: "DataProduct"*/ "../views/products/Data");
+const ADD_PRODUCT = () =>
+    import(/* webpackChunkName: "AddProduct" */ "../views/products/Add");
+const EDIT_PRODUCT = () =>
+    import(/* webpackChunknName: "EditProduct" */ "../views/products/Edit");
+
 Vue.use(VueRouter);
 
 // define routes
@@ -115,6 +124,40 @@ const routes = [
                 component: EDIT_COURIER,
                 meta: {
                     title: "Edit Courier",
+                },
+            },
+        ],
+    },
+    {
+        path: "/products",
+        component: INDEX_PRODUCT,
+        meta: {
+            requiresAuth: true,
+            title: "List Product",
+        },
+        children: [
+            {
+                path: "",
+                name: "ProductData",
+                component: DATA_PRODUCT,
+                meta: {
+                    title: "Manage Product",
+                },
+            },
+            {
+                path: "add",
+                name: "ProductAdd",
+                component: ADD_PRODUCT,
+                meta: {
+                    title: "Add Product",
+                },
+            },
+            {
+                path: "edit/:id",
+                name: "ProductEdit",
+                component: EDIT_PRODUCT,
+                meta: {
+                    title: "Edit Product",
                 },
             },
         ],

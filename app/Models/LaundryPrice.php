@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class LaundryPrice extends Model
 {
     use HasFactory;
-    protected $table  = 'laundry_price';
+    protected $table  = 'laundry_prices';
     protected $fillable = [
         'name',
         'unit_type',
@@ -19,7 +19,7 @@ class LaundryPrice extends Model
     protected $casts = [
         'laundry_type_id' => 'integer',
         'user_id'         => 'integer',
-        'price'           => 'decimal,2'
+        'price'           => 'integer'
     ];
 
     // limit data perpage

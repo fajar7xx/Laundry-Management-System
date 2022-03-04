@@ -11,6 +11,7 @@ import auth from "./modules/auth";
 import outlet from "./modules/outlet";
 import notification from "./modules/notification";
 import courier from "./modules/courier";
+import product from "./modules/product";
 
 Vue.use(Vuex);
 
@@ -22,6 +23,7 @@ const store = new Vuex.Store({
         outlet,
         notification,
         courier,
+        product,
     },
 
     state: {

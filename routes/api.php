@@ -31,7 +31,7 @@ Route::group([
 
     Route::apiResource('outlets', OutletController::class);
     Route::apiResource('couriers', UserController::class);
-    Route::apiResource('product', ProductController::class);
+    Route::apiResource('products', ProductController::class);
 
     Route::get('/user', function (Request $request) {
         return $request->user();

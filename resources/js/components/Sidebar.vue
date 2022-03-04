@@ -58,6 +58,12 @@
               </router-link>
             </li>
             <li class="nav-item">
+              <router-link :to="{ name: 'ProductData' }" class="nav-link">
+                <i class="nav-icon fas fa-box"></i>
+                <p>Products</p>
+              </router-link>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" @click="logout" role="button">
                 <i class="fas fa-sign-out-alt nav-icon"></i>
                 <p>Logout</p>
