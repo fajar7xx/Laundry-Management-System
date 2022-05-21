@@ -27,8 +27,8 @@ Route::group([
 ], function () {
     Route::get('logout', [AuthController::class, 'logout']);
 
-    Route::post('laundry-type', [App\Http\Controllers\API\LaundryTypeController::class, 'store']);
 
+    Route::apiResource('laundry-type', LaundryTypeController::class);
     Route::apiResource('outlets', OutletController::class);
     Route::apiResource('couriers', UserController::class);
     Route::apiResource('products', ProductController::class);

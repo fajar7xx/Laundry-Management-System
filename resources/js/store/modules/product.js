@@ -45,6 +45,55 @@ const actions = {
             throw error;
         }
     },
+
+    async AddProductLaundry({ commit }, payload) {
+        try {
+            const response = await ProductService.createProduct(payload);
+        } catch (error) {
+            console.group("error for add product laundry");
+            console.log(error);
+            console.groupEnd();
+            if (error.response.status === 422) {
+                console.log("error error error");
+                commit("SET_ERRORS", error.response.data.errors, {
+                    root: true,
+                });
+            }
+            throw error;
+        }
+    },
+
+    async editProductLaundry({ commit }, id) {
+        try {
+            const reponse = await ProductService.getProduct(id);
+        } catch (error) {
+            console.group("error for add laundry type");
+            console.log(error);
+            console.groupEnd();
+            throw error;
+        }
+    },
+
+    async updateProductLaundry({ commit }, payload) {
+        try {
+            const response = await ProductService.updateProduct(
+                payload.id,
+                payload
+            );
+        } catch (error) {
+            console.group("error for update laundry product");
+            console.log(error);
+            console.groupEnd();
+            if (error.response.status === 422) {
+                console.log("error error error");
+                commit("SET_ERRORS", error.response.data.errors, {
+                    root: true,
+                });
+            }
+            throw error;
+        }
+    },
+
     async removeProduct({ dispatch }, id) {
         try {
             const response = await ProductService.deleteProduct(id);

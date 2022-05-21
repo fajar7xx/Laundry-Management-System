@@ -12,7 +12,7 @@
     "/js/AddCourier.js": "/js/AddCourier.js",
     "/js/EditCourier.js": "/js/EditCourier.js",
     "/js/IndexProduct.js": "/js/IndexProduct.js",
+    "/js/DataProduct.js": "/js/DataProduct.js",
     "/js/AddProduct.js": "/js/AddProduct.js",
-    "/css/app.css": "/css/app.css",
-    "/js/DataProduct.js": "/js/DataProduct.js"
+    "/css/app.css": "/css/app.css"
 }

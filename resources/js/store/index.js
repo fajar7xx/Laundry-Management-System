@@ -12,6 +12,7 @@ import outlet from "./modules/outlet";
 import notification from "./modules/notification";
 import courier from "./modules/courier";
 import product from "./modules/product";
+import laundryType from "./modules/laundryType";
 
 Vue.use(Vuex);
 
@@ -24,6 +25,7 @@ const store = new Vuex.Store({
         notification,
         courier,
         product,
+        laundryType,
     },
 
     state: {

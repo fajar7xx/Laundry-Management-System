@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LaundryType\LaundryTypeStoreRequest;
+use App\Http\Resources\LaundryType\LaundryTypeCollection;
 use App\Http\Resources\LaundryType\LaundryTypeResource;
 use App\Models\LaundryType;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class LaundryTypeController extends Controller
      */
     public function index(Request $request)
     {
-        //
+        $type = LaundryType::select('id', 'name')->orderBy('name', 'ASC')->get();
+        return new LaundryTypeCollection($type);
     }
 
     /**

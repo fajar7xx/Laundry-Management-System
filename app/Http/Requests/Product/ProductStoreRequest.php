@@ -27,7 +27,7 @@ class ProductStoreRequest extends FormRequest
             'name'            => ['required', 'string', 'max:100'],
             'unit_type'       => ['required'],
             'price'           => ['required', 'integer'],
-            'laundry_type_id' => ['required']
+            'laundry_type' => ['required']
         ];
     }
 

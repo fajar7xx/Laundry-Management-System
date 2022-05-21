@@ -22,7 +22,7 @@ class ProductController extends Controller
         $search = $request->q;
         $wildSearch = "%$search%";
 
-        $query = LaundryPrice::with(['laundryType', 'user']);
+        $query = LaundryPrice::query()->with(['laundryType', 'user']);
         $query->when($search, function ($q) use ($wildSearch) {
             $q->where('name', 'LIKE', $wildSearch);
         });
@@ -42,7 +42,7 @@ class ProductController extends Controller
         $product = LaundryPrice::create([
             'name' => $request->name,
             'unit_type' => $request->unit_type,
-            'laundry_type_id' => $request->laundry_type_id,
+            'laundry_type_id' => $request->laundry_type,
             'price' => $request->price,
             'user_id' => \Auth::id()
         ]);
