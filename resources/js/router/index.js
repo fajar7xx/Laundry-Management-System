@@ -35,7 +35,14 @@ const DATA_PRODUCT = () =>
 const ADD_PRODUCT = () =>
     import(/* webpackChunkName: "AddProduct" */ "../views/products/Add");
 const EDIT_PRODUCT = () =>
-    import(/* webpackChunknName: "EditProduct" */ "../views/products/Edit");
+    import(/* webpackChunkName: "EditProduct" */ "../views/products/Edit");
+
+const SETTING = () =>
+    import(/* webpackChunkName: "Setting" */ "../views/setting/Index");
+const SET_PERMISSION = () =>
+    import(
+        /* webpackChunkName: "SetPermission" */ "../views/setting/roles/SetPermission"
+    );
 
 Vue.use(VueRouter);
 
@@ -158,6 +165,24 @@ const routes = [
                 component: EDIT_PRODUCT,
                 meta: {
                     title: "Edit Product",
+                },
+            },
+        ],
+    },
+    {
+        path: "/setting",
+        component: SETTING,
+        meta: {
+            requiresAuth: true,
+            title: "Setting",
+        },
+        children: [
+            {
+                path: "role-permission",
+                name: "RolePermission",
+                component: SET_PERMISSION,
+                meta: {
+                    title: "Set Permission",
                 },
             },
         ],

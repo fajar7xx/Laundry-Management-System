@@ -193,14 +193,16 @@ export default {
     this.getLaundryType();
 
     if (this.routeName == "ProductEdit") {
-      this.editProduct(this.$router.params.id).then((res) => {
-        this.product = {
-          name: res.data.name,
-          unit_type: res.data.unit_type,
-          price: res.data.price,
-          laundry_type: res.data.laundry_type_id,
-        };
-      });
+      this.editProductLaundry(this.$route.params.id)
+        .then((res) => {
+          this.product = {
+            name: res.data.name,
+            unit_type: res.data.unit_type,
+            price: res.data.price,
+            laundry_type: res.data.laundry_type_id,
+          };
+        })
+        .catch((error) => console.log(error));
     }
   },
 
@@ -217,8 +219,8 @@ export default {
   methods: {
     ...mapActions("product", [
       "AddProductLaundry",
-      "editProduct",
-      "updateProduct",
+      "editProductLaundry",
+      "updateProductLaundry",
     ]),
     ...mapActions("laundryType", ["getLaundryType", "addLaundryType"]),
 
@@ -257,8 +259,8 @@ export default {
           break;
         case "ProductEdit":
           // tambahkan object id kedalam object product
-          Object.assign(shit.product, { id: this.$router.params.id });
-          this.updateProduct(this.product).then(() => {
+          Object.assign(this.product, { id: this.$route.params.id });
+          this.updateProductLaundry(this.product).then(() => {
             this.clearForm();
             this.$router.push({ name: "ProductData" });
             setTimeout(() => {

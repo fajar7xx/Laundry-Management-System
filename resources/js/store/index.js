@@ -13,6 +13,7 @@ import notification from "./modules/notification";
 import courier from "./modules/courier";
 import product from "./modules/product";
 import laundryType from "./modules/laundryType";
+import rolePermission from "./modules/rolePermission";
 
 Vue.use(Vuex);
 
@@ -26,6 +27,7 @@ const store = new Vuex.Store({
         courier,
         product,
         laundryType,
+        rolePermission,
     },
 
     state: {

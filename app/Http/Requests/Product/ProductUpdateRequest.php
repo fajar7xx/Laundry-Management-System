@@ -24,10 +24,10 @@ class ProductUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'            => ['required', 'string', 'max:100'],
-            'unit_type'       => ['required'],
-            'price'           => ['required', 'integer'],
-            'laundry_type_id' => ['required']
+            'name'         => ['required', 'string', 'max:100'],
+            'unit_type'    => ['required'],
+            'price'        => ['required', 'integer'],
+            'laundry_type' => ['required']
         ];
     }
 

@@ -70,10 +70,10 @@ class ProductController extends Controller
      */
     public function update(ProductUpdateRequest $request, LaundryPrice $product)
     {
-        $product->name = $request->name;
-        $product->unit_type = $request->unit_type;
-        $product->laundry_type_id = $request->laundry_type_id;
-        $product->price = $request->price;
+        $product->name            = $request->name;
+        $product->unit_type       = $request->unit_type;
+        $product->laundry_type_id = $request->laundry_type;
+        $product->price           = $request->price;
         $product->save();
 
         return new ProductResource($product);

@@ -14,5 +14,8 @@
     "/js/IndexProduct.js": "/js/IndexProduct.js",
     "/js/DataProduct.js": "/js/DataProduct.js",
     "/js/AddProduct.js": "/js/AddProduct.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/js/EditProduct.js": "/js/EditProduct.js",
+    "/js/Setting.js": "/js/Setting.js",
+    "/js/SetPermission.js": "/js/SetPermission.js"
 }

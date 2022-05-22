@@ -268,13 +268,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.getLaundryType();
 
     if (this.routeName == "ProductEdit") {
-      this.editProduct(this.$router.params.id).then(function (res) {
+      this.editProductLaundry(this.$route.params.id).then(function (res) {
         _this.product = {
           name: res.data.name,
           unit_type: res.data.unit_type,
           price: res.data.price,
           laundry_type: res.data.laundry_type_id
         };
+      })["catch"](function (error) {
+        return console.log(error);
       });
     }
   },
@@ -287,7 +289,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return this.$route.name;
     }
   }),
-  methods: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)("product", ["AddProductLaundry", "editProduct", "updateProduct"])), (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)("laundryType", ["getLaundryType", "addLaundryType"])), {}, {
+  methods: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)("product", ["AddProductLaundry", "editProductLaundry", "updateProductLaundry"])), (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)("laundryType", ["getLaundryType", "addLaundryType"])), {}, {
     addNewLaundryType: function addNewLaundryType() {
       var _this2 = this;
 
@@ -334,10 +336,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         case "ProductEdit":
           // tambahkan object id kedalam object product
-          Object.assign(shit.product, {
-            id: this.$router.params.id
+          Object.assign(this.product, {
+            id: this.$route.params.id
           });
-          this.updateProduct(this.product).then(function () {
+          this.updateProductLaundry(this.product).then(function () {
             _this3.clearForm();
 
             _this3.$router.push({
@@ -582,7 +584,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
-      _c("div", { staticClass: "card-title" }, [_vm._v("Add New Products")]),
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Add New Products")]),
     ])
   },
 ]

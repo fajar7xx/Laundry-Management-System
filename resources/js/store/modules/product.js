@@ -65,9 +65,11 @@ const actions = {
 
     async editProductLaundry({ commit }, id) {
         try {
-            const reponse = await ProductService.getProduct(id);
+            const response = await ProductService.getProduct(id);
+            // console.log(response.data);
+            return response.data;
         } catch (error) {
-            console.group("error for add laundry type");
+            console.group("error for edit laundry type");
             console.log(error);
             console.groupEnd();
             throw error;
@@ -80,6 +82,7 @@ const actions = {
                 payload.id,
                 payload
             );
+            return response.data;
         } catch (error) {
             console.group("error for update laundry product");
             console.log(error);

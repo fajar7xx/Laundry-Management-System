@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <div class="card-title">Add New Products</div>
+        <h3 class="card-title">Add New Products</h3>
       </div>
       <div class="card-body">
         <form-product ref="formProduct"></form-product>

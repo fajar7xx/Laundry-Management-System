@@ -64,6 +64,23 @@
               </router-link>
             </li>
             <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-cog"></i>
+                <p>
+                  Settings
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <router-link :to="{ name: 'SetPermission' }" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Set Permission</p>
+                  </router-link>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" @click="logout" role="button">
                 <i class="fas fa-sign-out-alt nav-icon"></i>
                 <p>Logout</p>
