@@ -14,6 +14,7 @@ tutorial:
             ✔ view/component @done(22-05-22 10:31)
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-6-role-user-permissions
         ☐ Kemudian buat file SetPermission.vue di dalam folder /pages/setting/roles dan tambahkan code: berhenti disini
+        ☐ File di atas membutuhkan role module user untuk mengelola request dan state yang dibutuhkan, buat file user.js di dalam folder /stores dan tambahkan code:
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-7-push-notification-expenses
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-8-manage-customers
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-9-modul-transaksi-part-1

@@ -73,10 +73,19 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <router-link :to="{ name: 'SetPermission' }" class="nav-link">
+                  <router-link
+                    :to="{ name: 'RolePermission' }"
+                    class="nav-link"
+                  >
                     <i class="far fa-circle nav-icon"></i>
                     <p>Set Permission</p>
                   </router-link>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Other Menu</p>
+                  </a>
                 </li>
               </ul>
             </li>
