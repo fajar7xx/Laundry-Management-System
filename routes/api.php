@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,36 +14,44 @@ use App\Http\Controllers\API\AuthController;
 |
 */
 
-Route::post('login', [AuthController::class, 'login']);
-
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::controller(AuthController::class)->group(function () {
+    Route::post('/login', 'login');
+    Route::get('/logout', 'logout')->middleware('auth:sanctum');
+});
 
 Route::group([
     'middleware' => 'auth:sanctum',
     'as'         => 'api.',
 ], function () {
-    Route::get('logout', [AuthController::class, 'logout']);
 
+    Route::controller(RolePermissionController::class)->group(function () {
+        Route::post('/role-permission', 'getRolePermission')->name('role-permission');
+        Route::post('/set-role-permission', 'setRolePermission')->name('set-role-permission');
+        Route::post('/set-role-user', 'setRoleUser')->name('set-role-user');
+    });
 
-    Route::apiResource('laundry-type', LaundryTypeController::class);
-    Route::apiResource('outlets', OutletController::class);
-    Route::apiResource('couriers', UserController::class);
-    Route::apiResource('products', ProductController::class);
-    Route::apiResource('roles', RoleController::class);
-    Route::apiResource('permissions', PermissionsController::class);
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/user-authenticated', 'getUserAuthenticated')->name('user-authenticated');
+        Route::get('/user-lists', 'userLists')->name('user-lists');
+    });
 
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
 
     Route::group([
-        'as'        => 'options.',
+        'name'        => 'options.',
         'prefix'    => 'options',
-        'namespace' => 'Options'
     ], function () {
-        Route::get('outlets', OutletController::class);
-        Route::get('laundry-types', LaundryTypeController::class);
+        Route::get('/outlets', Options\OutletController::class);
+        Route::get('/laundry-types', Options\LaundryTypeController::class);
     });
+
+    Route::apiResource('/laundry-type', LaundryTypeController::class);
+    Route::apiResource('/outlets', OutletController::class);
+    Route::apiResource('/couriers', UserController::class);
+    Route::apiResource('/products', ProductController::class);
+    Route::apiResource('/users', UserController::class);
+    Route::apiResource('/roles', RoleController::class)->only(['index']);
+    Route::apiResource('/permissions', PermissionController::class)->only(['index']);
 });

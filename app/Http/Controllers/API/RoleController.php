@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\RolePermission\RoleCollection;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
@@ -15,7 +16,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Role::all();
+        return new RoleCollection($roles);
     }
 
     /**

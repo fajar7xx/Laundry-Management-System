@@ -10,6 +10,7 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
@@ -30,6 +31,38 @@ class UserController extends Controller
 
         $users = $query->paginate();
         return new UserCollection($users);
+    }
+
+    /**
+     * userLists
+     *
+     * @return void
+     */
+    public function userLists()
+    {
+        $users = User::role('courier')->get();
+        return new UserCollection($users);
+    }
+
+    /**
+     * getUserAuthenticated
+     *
+     * @return void
+     */
+    public function getUserAuthenticated()
+    {
+        $user = \Auth::user();
+        $permissions = [];
+        $getAllPermissions = Permission::all();
+
+        foreach ($getAllPermissions as $permission) {
+            if ($user->can($permission->name)) {
+                $permissions[] = $permission->name;
+            }
+        }
+
+        $user['permission'] = $permissions;
+        return new UserCollection($user);
     }
 
     /**
