@@ -199,21 +199,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   created: function created() {
     this.getRoles(), this.getAllPermissions(), this.getUserLists();
   },
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)(["errors"])), mapsState(["user", {
+  computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)(["errors"])), mapsState(["user", {
     users: function users(state) {
       return state.users;
-    },
+    }
+  }])), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)(["rolePermission", {
     roles: function roles(state) {
       return state.roles;
     },
     permissions: function permissions(state) {
       return state.permissions;
     },
-    role_permission: function role_permission(state) {
-      return state.role_permission;
+    rolePermissions: function rolePermissions(state) {
+      return state.rolePermissions;
     }
   }])),
-  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapMutations)("user", ["CLEAR_ROLE_PERMISSION"])), {}, {
+  methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)("user", ["getUserLists", "getUserAuthenticated"])), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)("rolePermission", ["setRoleUser", "getALLRoles", "getAllPermissions", "getRolePermission", "setRolePermission"])), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapMutations)("rolePermission", ["CLEAR_ROLE_PERMISSION"])), {}, {
     setRole: function setRole() {
       var _this = this;
 

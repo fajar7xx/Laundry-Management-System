@@ -186,14 +186,28 @@ export default {
       "user",
       {
         users: (state) => state.users,
+      },
+    ]),
+    ...mapState([
+      "rolePermission",
+      {
         roles: (state) => state.roles,
         permissions: (state) => state.permissions,
-        role_permission: (state) => state.role_permission,
+        rolePermissions: (state) => state.rolePermissions,
       },
     ]),
   },
   methods: {
-    ...mapMutations("user", ["CLEAR_ROLE_PERMISSION"]),
+    ...mapActions("user", ["getUserLists", "getUserAuthenticated"]),
+    ...mapActions("rolePermission", [
+      "setRoleUser",
+      "getALLRoles",
+      "getAllPermissions",
+      "getRolePermission",
+      "setRolePermission",
+    ]),
+    ...mapMutations("rolePermission", ["CLEAR_ROLE_PERMISSION"]),
+
     setRole() {
       this.setRoleUser(this.role_user).then(() => {
         this.alert_role = true;
@@ -206,6 +220,7 @@ export default {
         }, 1000);
       });
     },
+
     addPermission(name) {
       let index = this.new_permission.findIndex((x) => x == name);
 
@@ -215,6 +230,7 @@ export default {
         this.new_permission.splice(index, 1);
       }
     },
+
     checkPermission() {
       this.loading = true;
       this.getRolePermission(this.role_selected).then(() => {
@@ -222,6 +238,7 @@ export default {
         this.new_permission = this.role_permission;
       });
     },
+
     setPermission() {
       this.setRolePermission({
         role_id: this.role_selected,

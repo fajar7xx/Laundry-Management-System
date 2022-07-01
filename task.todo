@@ -12,6 +12,7 @@ tutorial:
             ✔ router @done(22-05-22 10:31)
             ✔ state/vuex @done(22-05-22 10:31)
             ✔ view/component @done(22-05-22 10:31)
+            ☐ set mixin
     ☐ https://daengweb.id/aplikasi-laundry-laravel-58-vuejs-spa-6-role-user-permissions
         ☐ Kemudian buat file SetPermission.vue di dalam folder /pages/setting/roles dan tambahkan code: berhenti disini
         ☐ File di atas membutuhkan role module user untuk mengelola request dan state yang dibutuhkan, buat file user.js di dalam folder /stores dan tambahkan code:

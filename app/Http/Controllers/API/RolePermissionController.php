@@ -27,10 +27,6 @@ class RolePermissionController extends Controller
             ->get();
 
         return RolePermissionResource::collection($roleHasPermissions);
-        //     return response()->json([
-        //         'status' => 'success',
-        //         'data' => $roleHasPermissions
-        //     ]);
     }
 
     /**
@@ -39,7 +35,7 @@ class RolePermissionController extends Controller
      * @param  mixed $request
      * @return void
      */
-    public function setRolePermission(SetRolePermissionRequest $request)
+    public function setRolePermission(SetRolePermissionRequest $request): RolePermissionResource
     {
         $role = Role::find($request->role_id);
         $role->syncPermissions($request->permissions);
@@ -52,7 +48,7 @@ class RolePermissionController extends Controller
      * @param  mixed $request
      * @return void
      */
-    public function setRoleUser(SetRoleUserRequest $request)
+    public function setRoleUser(SetRoleUserRequest $request): RolePermissionResource
     {
         $user = User::find($request->user_id);
         $user->syncRoles([$request->role]);

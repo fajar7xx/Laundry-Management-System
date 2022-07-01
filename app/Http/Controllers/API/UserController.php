@@ -62,7 +62,7 @@ class UserController extends Controller
         }
 
         $user['permission'] = $permissions;
-        return new UserCollection($user);
+        return new UserResource($user);
     }
 
     /**
@@ -81,14 +81,28 @@ class UserController extends Controller
             $file->storeAs('public/couriers', $fileName);
         }
 
-        $user = User::create([
-            'name'      => $request->name,
-            'email'     => $request->email,
-            'password'  => \Hash::make($request->password),
-            'role'      => 3,                                 //daftar sebagai courier
-            'photo'     => $fileName,
-            'outlet_id' => $request->outlet_id,
-        ]);
+        \DB::beginTransaction();
+        try {
+            $user = User::create([
+                'name'      => $request->name,
+                'email'     => $request->email,
+                'password'  => \Hash::make($request->password),
+                'role'      => 3,                                 //daftar sebagai courier
+                'photo'     => $fileName,
+                'outlet_id' => $request->outlet_id,
+            ]);
+
+            $user->assignRole('courier');
+            \DB::commit();
+        } catch (\Exception $e) {
+            \DB::rollBack();
+
+            return response()->json([
+                'status' => 'error',
+                'data' => $e->getMessage()
+            ], 500);
+        }
+
 
         return new UserResource($user);
     }

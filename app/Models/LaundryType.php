@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class LaundryType extends Model
 {
@@ -13,7 +14,7 @@ class LaundryType extends Model
         'name'
     ];
 
-    public function laundryPrice()
+    public function laundryPrice(): HasMany
     {
         return $this->hasMany(LaundryPrice::class, 'laundry_type_id');
     }

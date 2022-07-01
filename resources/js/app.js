@@ -26,6 +26,15 @@ import "sweetalert2/dist/sweetalert2.min.css";
 // validation package for vue
 import Vuelidate from "vuelidate";
 
+// mixins
+import Permission from "./mixins/Permission";
+
+//vuex global
+import { mapActions, mapGetters } from "vuex";
+
+// use mixins
+Vue.mixin(Permission);
+
 // layout initialize in component global
 Vue.component("default-layout", Default);
 Vue.component("blank-layout", Blank);
