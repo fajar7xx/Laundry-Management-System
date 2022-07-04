@@ -64,7 +64,7 @@
               </router-link>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="javascript:void(0)" class="nav-link">
                 <i class="nav-icon fas fa-cog"></i>
                 <p>
                   Settings
@@ -78,7 +78,7 @@
                     class="nav-link"
                   >
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Set Permission</p>
+                    <p>Role & Permission</p>
                   </router-link>
                 </li>
                 <li class="nav-item">

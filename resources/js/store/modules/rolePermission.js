@@ -43,7 +43,7 @@ const actions = {
         }
     },
 
-    async getALLRoles({ commit }) {
+    async getAllRoles({ commit }) {
         try {
             const response = await RolePermissionService.getAllRoles();
             console.log(response.data);

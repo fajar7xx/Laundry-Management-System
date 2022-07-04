@@ -197,13 +197,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   created: function created() {
-    this.getRoles(), this.getAllPermissions(), this.getUserLists();
+    console.log("set roles and permission");
+    this.getAllRoles(), this.getAllPermissions(), this.getUserLists();
   },
-  computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)(["errors"])), mapsState(["user", {
+  computed: _objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)(["errors"])), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)("user", {
     users: function users(state) {
       return state.users;
     }
-  }])), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)(["rolePermission", {
+  })), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapState)("rolePermission", {
     roles: function roles(state) {
       return state.roles;
     },
@@ -213,8 +214,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     rolePermissions: function rolePermissions(state) {
       return state.rolePermissions;
     }
-  }])),
-  methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)("user", ["getUserLists", "getUserAuthenticated"])), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)("rolePermission", ["setRoleUser", "getALLRoles", "getAllPermissions", "getRolePermission", "setRolePermission"])), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapMutations)("rolePermission", ["CLEAR_ROLE_PERMISSION"])), {}, {
+  })),
+  methods: _objectSpread(_objectSpread(_objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)("user", ["getUserLists", "getUserAuthenticated"])), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)("rolePermission", ["setRoleUser", "getAllRoles", "getAllPermissions", "getRolePermission", "setRolePermission"])), (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapMutations)("rolePermission", ["CLEAR_ROLE_PERMISSION"])), {}, {
     setRole: function setRole() {
       var _this = this;
 
@@ -493,10 +494,10 @@ var render = function () {
                     },
                     [
                       _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Select Role"),
+                        _vm._v("Select Role User"),
                       ]),
                       _vm._v(" "),
-                      _vm._l(_vm.roles, function (row, index) {
+                      _vm._l(_vm.roles.data, function (row, index) {
                         return _c(
                           "option",
                           { key: index, domProps: { value: row.name } },
@@ -565,7 +566,7 @@ var render = function () {
                         _vm._v("Select User"),
                       ]),
                       _vm._v(" "),
-                      _vm._l(_vm.users, function (row, index) {
+                      _vm._l(_vm.users.data, function (row, index) {
                         return _c(
                           "option",
                           { key: index, domProps: { value: row.id } },
@@ -645,7 +646,7 @@ var render = function () {
                         _vm._v("Select Role"),
                       ]),
                       _vm._v(" "),
-                      _vm._l(_vm.roles, function (row, index) {
+                      _vm._l(_vm.roles.data, function (row, index) {
                         return _c(
                           "option",
                           { key: index, domProps: { value: row.id } },
@@ -696,62 +697,7 @@ var render = function () {
                       )
                     : _vm._e(),
                   _vm._v(" "),
-                  _c("div", { staticClass: "nav-tab-custom" }, [
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "tab-content",
-                        attrs: { id: "myPermissionTab" },
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "tab-pane fade show active",
-                            attrs: {
-                              id: "tab_1",
-                              role: "tabpanel",
-                              "aria-labelledby": "tab-1",
-                            },
-                          },
-                          [
-                            _vm._l(_vm.permissions, function (row, index) {
-                              return [
-                                _c("input", {
-                                  key: index,
-                                  staticClass: "minimal-red",
-                                  attrs: { type: "checkbox" },
-                                  domProps: {
-                                    value: row.name,
-                                    checked:
-                                      _vm.role_permission.findIndex(function (
-                                        x
-                                      ) {
-                                        return x.name == row.name
-                                      }) != -1,
-                                  },
-                                  on: {
-                                    click: function ($event) {
-                                      return _vm.addPermission(row.name)
-                                    },
-                                  },
-                                }),
-                                _vm._v(_vm._s(row.name) + " "),
-                                _c("br", { key: "row" + index }),
-                                _vm._v(" "),
-                                (index + 1) % 4 === 0
-                                  ? _c("br", { key: "enter" + index })
-                                  : _vm._e(),
-                              ]
-                            }),
-                          ],
-                          2
-                        ),
-                      ]
-                    ),
-                  ]),
+                  _vm._m(3),
                 ]),
                 _vm._v(" "),
                 _vm._m(4),
@@ -796,32 +742,38 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "ul",
-      {
-        staticClass: "nav nav-tabs",
-        attrs: { id: "permissiontab", role: "tablist" },
-      },
-      [
-        _c("li", { staticClass: "nav-item", attrs: { role: "presentation" } }, [
+    return _c("div", { staticClass: "nav-tab-custom" }, [
+      _c(
+        "ul",
+        {
+          staticClass: "nav nav-tabs",
+          attrs: { id: "permissiontab", role: "tablist" },
+        },
+        [
           _c(
-            "a",
-            {
-              staticClass: "nav-link active",
-              attrs: {
-                href: "#tab_1",
-                id: "tab1",
-                "data-toggle": "tab",
-                role: "tab",
-                "aria-controls": "tab1",
-                "aria-selected": "true",
-              },
-            },
-            [_vm._v("Permission")]
+            "li",
+            { staticClass: "nav-item", attrs: { role: "presentation" } },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link active",
+                  attrs: {
+                    href: "#tab_1",
+                    id: "tab1",
+                    "data-toggle": "tab",
+                    role: "tab",
+                    "aria-controls": "tab1",
+                    "aria-selected": "true",
+                  },
+                },
+                [_vm._v("Permission")]
+              ),
+            ]
           ),
-        ]),
-      ]
-    )
+        ]
+      ),
+    ])
   },
   function () {
     var _vm = this

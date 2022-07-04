@@ -22,9 +22,9 @@
                   class="form-control"
                   v-model="role_user.role"
                 >
-                  <option value="">Select Role</option>
+                  <option value="">Select Role User</option>
                   <option
-                    v-for="(row, index) in roles"
+                    v-for="(row, index) in roles.data"
                     :key="index"
                     :value="row.name"
                   >
@@ -45,7 +45,7 @@
                 >
                   <option value="">Select User</option>
                   <option
-                    v-for="(row, index) in users"
+                    v-for="(row, index) in users.data"
                     :key="index"
                     :value="row.id"
                   >
@@ -80,7 +80,7 @@
                 >
                   <option value="">Select Role</option>
                   <option
-                    v-for="(row, index) in roles"
+                    v-for="(row, index) in roles.data"
                     :key="index"
                     :value="row.id"
                   >
@@ -118,7 +118,7 @@
                     </li>
                   </ul>
 
-                  <div class="tab-content" id="myPermissionTab">
+                  <!-- <div class="tab-content" id="myPermissionTab">
                     <div
                       class="tab-pane fade show active"
                       id="tab_1"
@@ -144,7 +144,7 @@
                         />
                       </template>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <div class="form-group">
@@ -178,30 +178,25 @@ export default {
     };
   },
   created() {
-    this.getRoles(), this.getAllPermissions(), this.getUserLists();
+    console.log(`set roles and permission`);
+    this.getAllRoles(), this.getAllPermissions(), this.getUserLists();
   },
   computed: {
     ...mapState(["errors"]),
-    ...mapsState([
-      "user",
-      {
-        users: (state) => state.users,
-      },
-    ]),
-    ...mapState([
-      "rolePermission",
-      {
-        roles: (state) => state.roles,
-        permissions: (state) => state.permissions,
-        rolePermissions: (state) => state.rolePermissions,
-      },
-    ]),
+    ...mapState("user", {
+      users: (state) => state.users,
+    }),
+    ...mapState("rolePermission", {
+      roles: (state) => state.roles,
+      permissions: (state) => state.permissions,
+      rolePermissions: (state) => state.rolePermissions,
+    }),
   },
   methods: {
     ...mapActions("user", ["getUserLists", "getUserAuthenticated"]),
     ...mapActions("rolePermission", [
       "setRoleUser",
-      "getALLRoles",
+      "getAllRoles",
       "getAllPermissions",
       "getRolePermission",
       "setRolePermission",

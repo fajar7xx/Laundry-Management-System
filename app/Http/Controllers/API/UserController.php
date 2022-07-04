@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -36,20 +37,24 @@ class UserController extends Controller
     /**
      * userLists
      *
-     * @return void
+     * @return UserCollection
      */
-    public function userLists()
+    public function userLists(): UserCollection
     {
-        $users = User::role('courier')->get();
+        $users = User::select(['id', 'name', 'email', 'photo'])
+            ->with([
+                'roles' => fn ($query) => $query->where('name', '!=', 'courier')
+            ])->get();
         return new UserCollection($users);
     }
+
 
     /**
      * getUserAuthenticated
      *
-     * @return void
+     * @return UserResource
      */
-    public function getUserAuthenticated()
+    public function getUserAuthenticated(): UserResource
     {
         $user = \Auth::user();
         $permissions = [];
